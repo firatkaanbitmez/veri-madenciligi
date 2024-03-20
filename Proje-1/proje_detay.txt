@@ -1,0 +1,7 @@
+Öncelikle, seçeceğiniz beş farklı köşe yazarına ait  ve her bir yazarın minimum 20 köşe yazısını 
+içerecek şekilde bir eğitim kümesi oluşturmanız beklenmektedir. Bu eğitim kümesini kullanarak bir model geliştiriniz. 
+Geliştirdiğiniz modele yeni bir köşe yazısı verildiğinde bu yazının hangi yazara ait olduğunu tespit eden veri madenciliği 
+projesini gerçekleyiniz. Modeli geliştirirken Zemberek kütüphanesinden yararlanabilirsiniz.
+Ödevler teslim edilirken sisteme yüklenecek dosyalar: Rapor ve Kod dosyası
+Raporu hazırlarken, model için kullandığınız/oluşturduğunuz veri kümesini, burada ne tür önişleme adımlarını 
+gerçekleştirdiğinizi, modeli nasıl oluşturduğunuzu, elde ettiğiniz sonuçların ne olduğunu detaylandırmanız ve yorumlamanız gerekmektedir.
