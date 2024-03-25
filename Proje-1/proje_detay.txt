@@ -5,3 +5,6 @@ projesini gerçekleyiniz. Modeli geliştirirken Zemberek kütüphanesinden yarar
 Ödevler teslim edilirken sisteme yüklenecek dosyalar: Rapor ve Kod dosyası
 Raporu hazırlarken, model için kullandığınız/oluşturduğunuz veri kümesini, burada ne tür önişleme adımlarını 
 gerçekleştirdiğinizi, modeli nasıl oluşturduğunuzu, elde ettiğiniz sonuçların ne olduğunu detaylandırmanız ve yorumlamanız gerekmektedir.
+
+
+1
