@@ -6,3 +6,67 @@ projesini gerçekleyiniz. Modeli geliştirirken Zemberek kütüphanesinden yarar
 Raporu hazırlarken, model için kullandığınız/oluşturduğunuz veri kümesini, burada ne tür önişleme adımlarını 
 gerçekleştirdiğinizi, modeli nasıl oluşturduğunuzu, elde ettiğiniz sonuçların ne olduğunu detaylandırmanız ve yorumlamanız gerekmektedir.
 
+
+
+doc1 Ugur DÜndar
+doc2
+doc3
+doc4
+doc5
+
+
+
+
+
+PROJE ADIMLARI VE İŞLEMLERİMİZ:
+Veri Kümesi
+
+Eğitim kümesi 5 farklı köşe yazarına ait 20'şer köşe yazısı içerir. Yazılar metin dosyaları olarak saklanır.
+
+Önişleme
+
+Metin Temizleme: Noktalama işaretleri, özel karakterler ve durdurma sözcükleri metinden kaldırılır.
+Kelime Köklerine Dönüştürme: Zemberek kütüphanesi kullanılarak kelimeler köklerine dönüştürülür.
+Feature Seçimi: En sık kullanılan ve yazarları ayırt etmede en yararlı olan kelimeler seçilir.
+
+Model Oluşturma
+Sınıflandırma modeli için farklı algoritmalar kullanılabilir. Örneğin, Naive Bayes, K-Nearest Neighbors (KNN), Support Vector Machines (SVM) veya Random Forest gibi algoritmalar kullanılabilir.
+
+Değerlendirme
+
+Model, eğitim kümesi üzerinde değerlendirilir ve doğruluk oranı hesaplanır. Daha sonra, modele yeni bir köşe yazısı verilir ve bu yazının hangi yazara ait olduğunu tahmin etmesi istenir.
+
+Sonuçlar
+
+Elde edilen sonuçlar raporda detaylandırılır ve yorumlanır. Rapor, kullanılan veri kümesini, önişleme adımlarını, modelin nasıl oluşturulduğunu ve elde edilen sonuçların değerlendirmesini içerir.
+
+Kod
+
+Kod dosyası, veri ön işleme, model oluşturma ve değerlendirme için kullanılan kodları içerir.
+
+Rapor Hazırlama
+
+Rapor aşağıdaki bölümleri içerir:
+
+Giriş: Ödevin amacı ve kullanılan yöntemler hakkında bilgi verilir.
+Veri Kümesi: Kullanılan veri kümesi ve önişleme adımları hakkında bilgi verilir.
+Model Oluşturma: Kullanılan model ve parametreleri hakkında bilgi verilir.
+Değerlendirme: Elde edilen sonuçlar ve yorumları sunulur.
+Sonuç: Özet ve çıkarımlar sunulur.
+Kod Dosyası
+
+Kod dosyası aşağıdaki kodları içerir:
+
+Veri yükleme ve ön işleme
+Model oluşturma
+Model değerlendirme
+Ek Notlar
+
+Zemberek kütüphanesinin kullanımı için Zemberek dokümantasyonu: [geçersiz URL kaldırıldı] incelenebilir.
+Farklı sınıflandırma algoritmaları hakkında bilgi için scikit-learn: https://scikit-learn.org/stable/ kütüphanesi kullanılabilir.
+Rapor ve kod dosyası ödeve uygun şekilde hazırlanmalıdır.
+Yararlı Kaynaklar
+
+Veri Madenciliği ile Yazar Tanıma: [geçersiz URL kaldırıldı]
+Zemberek Kütüphanesi: [geçersiz URL kaldırıldı]
+scikit-learn: https://scikit-learn.org/stable/
