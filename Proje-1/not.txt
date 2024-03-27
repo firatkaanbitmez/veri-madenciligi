@@ -1,0 +1,19 @@
+Metin Ön İşleme İyileştirmeleri:
+Stop-Word Kaldırma: Metinlerinizden yaygın kelimeleri çıkararak modelinizi geliştirebilirsiniz.
+Daha İyi Normalizasyon: Metinlerinizin daha iyi normalizasyonundan geçirilmesi için Zemberek kütüphanesinden daha fazla yararlanabilirsiniz.
+
+Model ve Pipeline Ayarlamaları:
+TF-IDF Parametreleri: TF-IDF vektörizasyonunda kullanılan parametreleri ayarlayarak daha iyi bir performans elde edebilirsiniz. Örneğin, belirli bir kelimenin belirli bir sınıfı ayırt ediciliğini artırmak için max_df ve min_df gibi parametreleri kullanabilirsiniz.
+Farklı Sınıflandırıcılar: Naive Bayes dışında farklı sınıflandırıcıları da deneyebilirsiniz. Örneğin, destek vektör makineleri veya karar ağaçları gibi.
+
+Veri Seti Dengeleme:
+Eğitim veri setinizdeki sınıf dengesizliğini düzeltebilirsiniz. Belirli bir yazarın cümle sayısının diğerlerine kıyasla çok fazla olması modelinizin yanlış sonuçlar vermesine neden olabilir.
+
+Cross-Validation Kat Sayısı: cross_val_score fonksiyonunda kullanılan kat sayısını artırarak daha güvenilir bir çapraz doğrulama yapabilirsiniz.
+
+Model Performansını İyileştirme:
+
+Model Hiperparametre Ayarlaması: Naive Bayes sınıflandırıcısının alfa parametresini ayarlayarak veya başka bir sınıflandırıcı kullanarak modelinizi iyileştirebilirsiniz.
+
+Model Sonuçlarının Değerlendirilmesi:
+Elde edilen sonuçları daha ayrıntılı bir şekilde analiz edin. Özellikle, hangi sınıfların yanlış sınıflandırıldığını belirlemek için confusion matrix gibi a

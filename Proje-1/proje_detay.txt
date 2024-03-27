@@ -8,65 +8,36 @@ gerçekleştirdiğinizi, modeli nasıl oluşturduğunuzu, elde ettiğiniz sonuç
 
 
 
-doc1 Ugur DÜndar
-doc2
-doc3
-doc4
-doc5
+doc1 Ugur Dündar
+doc2 Soner Yalçın
+doc3 Murat Muratoğlu
+doc4 Necati Doğru
+doc5 Rahmi Turan
+
+doc6 2023ugur dündar yazısı
 
 
-
+pip install scikit-learn
 
 
 PROJE ADIMLARI VE İŞLEMLERİMİZ:
-Veri Kümesi
 
-Eğitim kümesi 5 farklı köşe yazarına ait 20'şer köşe yazısı içerir. Yazılar metin dosyaları olarak saklanır.
+Veri Kümesi Oluşturma:
+İlk adım olarak, her biri farklı bir köşe yazarına ait olan ve en az 20 köşe yazısını içeren bir veri kümesi oluşturacağız. Bu yazıları toplamak için belirli bir köşe yazısı kaynağından ya da çeşitli köşe yazarlarının makalelerini içeren bir veri havuzundan yararlanabiliriz. Her bir köşe yazısını ayrı bir dosyada saklayabiliriz.
 
-Önişleme
+Metin Ön İşleme:
+Metin ön işleme aşamasında, Zemberek kütüphanesini kullanarak Türkçe metinler üzerinde normalizasyon, temizleme ve belki de stop-word kaldırma gibi işlemler gerçekleştireceğiz. Bu adımların amacı, metinlerin daha tutarlı ve anlamlı bir biçimde işlenmesini sağlamak olacaktır.
 
-Metin Temizleme: Noktalama işaretleri, özel karakterler ve durdurma sözcükleri metinden kaldırılır.
-Kelime Köklerine Dönüştürme: Zemberek kütüphanesi kullanılarak kelimeler köklerine dönüştürülür.
-Feature Seçimi: En sık kullanılan ve yazarları ayırt etmede en yararlı olan kelimeler seçilir.
+Model Oluşturma ve Eğitme:
+Metin ön işleme adımlarını tamamladıktan sonra, TfidfVectorizer kullanarak metinleri vektörlere dönüştüreceğiz ve Multinomial Naive Bayes gibi bir sınıflandırma algoritması kullanarak bir model oluşturacağız.
+Oluşturduğumuz modeli eğitmek için eğitim verisiyle modeli besleyeceğiz.
 
-Model Oluşturma
-Sınıflandırma modeli için farklı algoritmalar kullanılabilir. Örneğin, Naive Bayes, K-Nearest Neighbors (KNN), Support Vector Machines (SVM) veya Random Forest gibi algoritmalar kullanılabilir.
+Modelin Performansının Değerlendirilmesi:
+Eğitim süreci tamamlandıktan sonra, modelin performansını test etmek için ayrılmış bir test veri seti kullanacağız.
+Modelin doğruluğunu, kesinliğini, geri çağırmasını ve F1 puanını hesaplayarak sınıflandırma performansını değerlendireceğiz.
 
-Değerlendirme
+Yeni Köşe Yazısının Yazarını Tahmin Etme:
+Modelin başarıyla eğitilip değerlendirilmesinin ardından, yeni bir köşe yazısının hangi yazar tarafından yazıldığını tahmin etmek için modeli kullanacağız.
 
-Model, eğitim kümesi üzerinde değerlendirilir ve doğruluk oranı hesaplanır. Daha sonra, modele yeni bir köşe yazısı verilir ve bu yazının hangi yazara ait olduğunu tahmin etmesi istenir.
-
-Sonuçlar
-
-Elde edilen sonuçlar raporda detaylandırılır ve yorumlanır. Rapor, kullanılan veri kümesini, önişleme adımlarını, modelin nasıl oluşturulduğunu ve elde edilen sonuçların değerlendirmesini içerir.
-
-Kod
-
-Kod dosyası, veri ön işleme, model oluşturma ve değerlendirme için kullanılan kodları içerir.
-
-Rapor Hazırlama
-
-Rapor aşağıdaki bölümleri içerir:
-
-Giriş: Ödevin amacı ve kullanılan yöntemler hakkında bilgi verilir.
-Veri Kümesi: Kullanılan veri kümesi ve önişleme adımları hakkında bilgi verilir.
-Model Oluşturma: Kullanılan model ve parametreleri hakkında bilgi verilir.
-Değerlendirme: Elde edilen sonuçlar ve yorumları sunulur.
-Sonuç: Özet ve çıkarımlar sunulur.
-Kod Dosyası
-
-Kod dosyası aşağıdaki kodları içerir:
-
-Veri yükleme ve ön işleme
-Model oluşturma
-Model değerlendirme
-Ek Notlar
-
-Zemberek kütüphanesinin kullanımı için Zemberek dokümantasyonu: [geçersiz URL kaldırıldı] incelenebilir.
-Farklı sınıflandırma algoritmaları hakkında bilgi için scikit-learn: https://scikit-learn.org/stable/ kütüphanesi kullanılabilir.
-Rapor ve kod dosyası ödeve uygun şekilde hazırlanmalıdır.
-Yararlı Kaynaklar
-
-Veri Madenciliği ile Yazar Tanıma: [geçersiz URL kaldırıldı]
-Zemberek Kütüphanesi: [geçersiz URL kaldırıldı]
-scikit-learn: https://scikit-learn.org/stable/
+Raporlama:
+Projenin sonuçlarını ve elde edilen sonuçları detaylandıran bir rapor hazırlayacağız. Rapor, kullandığımız veri kümesini, metin ön işleme adımlarını, model oluşturma sürecini ve sonuçları içerecek şekilde düzenlenecektir.
