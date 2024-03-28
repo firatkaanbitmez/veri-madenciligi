@@ -18,6 +18,7 @@ doc6 2023ugur dündar yazısı
 
 
 pip install scikit-learn
+pip install --upgrade setuptools
 
 
 PROJE ADIMLARI VE İŞLEMLERİMİZ:

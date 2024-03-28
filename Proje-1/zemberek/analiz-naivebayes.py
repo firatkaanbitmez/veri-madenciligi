@@ -6,10 +6,8 @@ from zemberek import TurkishSentenceExtractor
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import make_pipeline
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import classification_report
-from sklearn.model_selection import cross_val_score
-
 
 # Zemberek kütüphanesini kullanarak Türkçe metin işleme özelliklerini tanımla
 extractor = TurkishSentenceExtractor()
@@ -66,7 +64,7 @@ with open(new_article_path, "r", encoding="utf-8") as file:
 predicted_author = model.predict([new_article])[0]
 print("Tahmin Edilen Yazar:", predicted_author)
 
-
+# Modelin çapraz doğrulama skorlarını hesaplama
 cv_scores = cross_val_score(model, X, y, cv=5)  # 5 kat çapraz doğrulama
 print("Çapraz Doğrulama Skorları:", cv_scores)
 print("Ortalama Çapraz Doğrulama Skoru:", cv_scores.mean())
