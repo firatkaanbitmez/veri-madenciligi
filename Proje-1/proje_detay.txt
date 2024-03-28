@@ -7,6 +7,8 @@ Raporu hazırlarken, model için kullandığınız/oluşturduğunuz veri kümesi
 gerçekleştirdiğinizi, modeli nasıl oluşturduğunuzu, elde ettiğiniz sonuçların ne olduğunu detaylandırmanız ve yorumlamanız gerekmektedir.
 
 
+Hoca Confusion matrisi (hata matisi ile göster dedi)
+
 
 doc1 Ugur Dündar
 doc2 Soner Yalçın
