@@ -21,6 +21,7 @@ doc6 2023ugur dündar yazısı
 
 pip install scikit-learn
 pip install --upgrade setuptools
+pip install matplotlib seaborn
 
 
 PROJE ADIMLARI VE İŞLEMLERİMİZ:
