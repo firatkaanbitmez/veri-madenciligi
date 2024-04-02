@@ -21,22 +21,22 @@ author_dirs = ["yazar1", "yazar2", "yazar3", "yazar4", "yazar5"]
 
 # Her yazar için minimum 20 köşe yazısı alacak şekilde eğitim verisi oluştur
 training_data = defaultdict(list)
-min_sentence_count = 20  # Her yazar için 20 cümle alacağız
+min_document_count = 20  # Her yazar için minimum 20 dosya (köşe yazısı) alacağız
 
 for author_dir in author_dirs:
     author = re.match(r"yazar(\d+)", author_dir).group(1)  # Yazarı belirle
     author_path = os.path.join(base_dir, author_dir)
     doc_files = [f for f in os.listdir(author_path) if f.endswith(".txt")]
-    for file_name in doc_files:
+    if len(doc_files) < min_document_count:
+        print(f"{author_dir} için yeterli sayıda dosya yok.")
+        continue
+    for file_name in doc_files[:min_document_count]:  # En fazla ilk 20 dosyayı al
         file_path = os.path.join(author_path, file_name)
         with open(file_path, "r", encoding="utf-8") as file:
             text = file.read()
             sentences = extractor.from_paragraph(text)
-            if len(sentences) >= min_sentence_count:
-                random.shuffle(sentences)  # Yazıları karıştır
-                training_data[author].extend(sentences[:min_sentence_count])
-            else:
-                print(f"Yeterli sayıda cümle yok: {file_name}")
+            random.shuffle(sentences)  # Yazıları karıştır
+            training_data[author].extend(sentences)
 
 # Oluşturulan eğitim verisini göster
 for author, sentences in training_data.items():
