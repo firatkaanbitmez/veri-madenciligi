@@ -24,6 +24,15 @@ pip install --upgrade setuptools
 pip install matplotlib seaborn
 
 
+
+python setup.py install
+
+python setup.py sdist  # Creates a source distribution
+python setup.py bdist_wheel  # Creates a wheel distribution
+
+
+
+
 PROJE ADIMLARI VE İŞLEMLERİMİZ:
 
 Veri Kümesi Oluşturma:
