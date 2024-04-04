@@ -1,3 +1,0 @@
-from .turkish_morphotactics import TurkishMorphotactics
-from .informal_turkish_morphotactics import InformalTurkishMorphotactics
-
