@@ -23,6 +23,9 @@ pip install scikit-learn
 pip install --upgrade setuptools
 pip install matplotlib seaborn
 
+pip install pyzemberek
+
+
 
 
 python setup.py install
