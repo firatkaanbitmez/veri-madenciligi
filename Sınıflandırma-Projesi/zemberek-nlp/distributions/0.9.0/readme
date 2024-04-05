@@ -1,0 +1,11 @@
+Here are the jar files for Zemberek-NLP project.
+
+Project module jars and their dependencies:
+
+zemberek-core [guava]
+
+zemberek-morphology [zemberek-core, zemberek-lm, zemberek-tokenization, guava, berkeleylm, antlr4-runtime-4.0.1z.jar ]
+
+zemberek-hyphenation [guava]
+
+zemberek-tokenization [guava, antlr4-runtime-4.0.1z.jar]

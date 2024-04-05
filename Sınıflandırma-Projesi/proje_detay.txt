@@ -25,7 +25,7 @@ pip install matplotlib seaborn
 
 pip install pyzemberek
 
-
+pip install jpype1
 
 
 python setup.py install

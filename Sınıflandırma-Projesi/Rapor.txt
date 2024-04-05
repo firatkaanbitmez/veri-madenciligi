@@ -3,10 +3,8 @@ Veri Madenciliği Projesi Raporu
 1. Veri Kümesi
 İlk olarak, beş farklı köşe yazarının en az 20 köşe yazısını içeren bir eğitim kümesi oluşturuldu. Bu eğitim kümesi, aşağıdaki dizinde bulunmaktadır:
 
-Edit
-Full Screen
-Copy code
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Proje-1\zemberek
+
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Veri-Test-kümesi
 Her yazar için ayrı bir klasör oluşturulmuştur ve her klasörde 20 adet köşe yazısı bulunmaktadır. Yazar klasörleri ve içerdikleri dosyalar aşağıdaki gibidir:
 
 yazar1
@@ -43,10 +41,8 @@ Model oluşturma aşama sonrasında, her bir yazar için bir vektör elde edilmi
 4. Test Verisi
 Test verisi, aşağıdaki dizinde bulunmaktadır:
 
-Edit
-Full Screen
-Copy code
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Proje-1\zemberek\testyazar
+
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Veri-Test-kümesi\testyazar
 Test verisi, 20 adet köşe yazısından oluşmaktadır. Her bir test yazısı, modelin tahmin etmesi için kullanılmıştır.
 
 5. Sonuçlar
