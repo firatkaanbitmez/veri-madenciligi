@@ -10,13 +10,13 @@ gerçekleştirdiğinizi, modeli nasıl oluşturduğunuzu, elde ettiğiniz sonuç
 Hoca Confusion matrisi (hata matisi ile göster dedi)
 
 
-doc1 Ugur Dündar
-doc2 Soner Yalçın
-doc3 Murat Muratoğlu
-doc4 Necati Doğru
-doc5 Rahmi Turan
+yazar1 Ugur Dündar
+yazar2 Soner Yalçın
+yazar3 Murat Muratoğlu
+yazar4 Necati Doğru
+yazar5 Rahmi Turan
 
-doc6 2023ugur dündar yazısı
+
 
 
 pip install scikit-learn

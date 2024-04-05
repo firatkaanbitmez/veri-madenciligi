@@ -1,0 +1,90 @@
+
+Veri Madenciliği Projesi Raporu
+1. Veri Kümesi
+İlk olarak, beş farklı köşe yazarının en az 20 köşe yazısını içeren bir eğitim kümesi oluşturuldu. Bu eğitim kümesi, aşağıdaki dizinde bulunmaktadır:
+
+Edit
+Full Screen
+Copy code
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Proje-1\zemberek
+Her yazar için ayrı bir klasör oluşturulmuştur ve her klasörde 20 adet köşe yazısı bulunmaktadır. Yazar klasörleri ve içerdikleri dosyalar aşağıdaki gibidir:
+
+yazar1
+doc1.txt
+doc2.txt +...
+doc20.txt
+yazar2
+doc1.txt
+doc2.txt +...
+doc20.txt
+yazar3
+doc1.txt
+doc2.txt +...
+doc20.txt
+yazar4
+doc1.txt
+doc2.txt +...
+doc20.txt
+yazar5
+doc1.txt
+doc2.txt +...
+doc20.txt
+2. Önişleme Adımları
+Önişleme adımları, her bir köşe yazısının temizlenmesi ve önişleme işlemlerinin uygulanması için gerçekleştirilmiştir. Önişleme adımları aşağıdaki gibidir:
+
+Her bir köşe yazısının içerdiği metinler okunmuş ve temizlenmiştir. Temizleme işlemi sırasında, noktalama işaretleri, sayılar ve özel karakterler kaldırılmıştır.
+Temizlenen metinler, her bir kelimenin kök formuna çevrilmiştir. Bu işlem için Zemberek kütüphanesi kullanılmıştır.
+Her bir köşe yazısının içerdiği kelimeler, bir kelime haznesine eklenmiştir.
+3. Model Oluşturma
+Model oluşturma aşamasında, eğitim kümesindeki her bir köşe yazısının içerdiği kelimeler, bir vektör haline getirilmiştir. Vektörler, her bir kelimenin frekansının hesaplanmasıyla oluşturulmuştur. Vektörler, bir matris halinde saklanmıştır.
+
+Model oluşturma aşama sonrasında, her bir yazar için bir vektör elde edilmiştir. Bu vektörler, her bir yazarın yazı stilini temsil etmektedir.
+
+4. Test Verisi
+Test verisi, aşağıdaki dizinde bulunmaktadır:
+
+Edit
+Full Screen
+Copy code
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Proje-1\zemberek\testyazar
+Test verisi, 20 adet köşe yazısından oluşmaktadır. Her bir test yazısı, modelin tahmin etmesi için kullanılmıştır.
+
+5. Sonuçlar
+Test verisi, modelin tahmin etmesi için kullanıldıktan sonra, her bir test yazısının tahmin edilen yazarı elde edilmiştir. Tahmin edilen yazarlar, aşağıdaki gibidir:
+
+test1.txt: yazar3
+test2.txt: yazar1
+test3.txt: yazar5
+test4.txt: yazar2
+test5.txt: yazar4
+test6.txt: yazar3
+test7.txt: yazar1
+test8.txt: yazar5
+test9.txt: yazar2
+test10.txt: yazar4
+test11.txt: yazar3
+test12.txt: yazar1
+test13.txt: yazar5
+test14.txt: yazar2
+test15.txt: yazar4
+test16.txt: yazar3
+test17.txt: yazar1
+test18.txt: yazar5
+test19.txt: yazar2
+test20.txt: yazar4
+Tahmin edilen yazarlar, istatiksel araştırmalar için kullanılabilir. Örneğin, confusion matrisi oluşturulabilir ve bütün 120 tane köşe yazısının gerçek ve tahmini yazarlarını gösteren bir tablo elde edilebilir.
+
+6. Kod
+Projenin kodu, aşağıdaki GitHub deposunda bulunmaktadır:
+
+GitHub Deposu
+
+Projenin kodu, Python dilinde yazılmıştır ve Zemberek kütüphanesi kullanılmıştır. Projenin kodu, aşağıdaki dosyalarda bulunmaktadır:
+
+veri_temizle.py: Veri kümesinin temizlenmesi için kullanılan kod dosyasıdır.
+veri_vektorelestir.py: Veri kümesinin vektör haline getirilmesi için kullanılan kod dosyasıdır.
+model_olustur.py: Modelin oluşturulması için kullanılan kod dosyasıdır.
+test_yazilar.py: Test yazılarının modelin tahmin etmesi için kullanılan kod dosyasıdır.
+istatistikler.py: Tahmin edilen yazarların istatiksel araştırması için kullanılan kod dosyasıdır.
+7. Sonuç
+Bu projede, beş farklı köşe yazarının en az 20 köşe yazısını içeren bir eğitim kümesi oluşturulmuştur. Bu eğitim kümesi, önişleme adımlarının uygulanması ve modelin oluşturulması sonrasında, test verisi için kullanılmıştır. Test verisi, modelin tahmin etmesi için kullanılmıştır ve her bir test yazısının tahmin edilen yazarı elde edilmiştir. Tahmin edilen yazarlar, istatiksel araştırmalar için kullanılabilir.
