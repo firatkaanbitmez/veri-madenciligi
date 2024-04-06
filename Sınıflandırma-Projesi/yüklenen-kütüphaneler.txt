@@ -1,4 +1,51 @@
 
+pip install setuptools
+
+
+
+pip install Cython
+pip install jnius
+
+
+
+git clone https://github.com/kivy/pyjnius.git
+cd pyjnius
+python3 setup.py install --user
+
+pip install tqdm
+
+
+pip install scikit-learn
+
+jpype1
+
+pip install pandas
+xpip install xgboost
+ pip install nltk
+
+ pip install openpyxl
+
+
+pip install scikit-learn
+pip install --upgrade setuptools
+pip install matplotlib seaborn
+
+pip install pyzemberek
+
+pip install jpype1
+pip install zemberek
+pip install scikit-learn
+pip install pandas
+
+python setup.py install
+
+python setup.py sdist  # Creates a source distribution
+python setup.py bdist_wheel  # Creates a wheel distribution
+
+pip install -U scikit-learn
+python -m pip install --upgrade pip
+
+pip install zemberek-python
 Tabii ki, işte Java'nın yüklenmesi ve JAVA_HOME ortam değişkeninin ayarlanması için adım adım bir rehber:
 
 Java'yı İndirme:
