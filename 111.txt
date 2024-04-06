@@ -18,3 +18,9 @@ pip install tqdm
 pip install scikit-learn
 
 jpype1
+
+pip install pandas
+xpip install xgboost
+ pip install nltk
+
+ pip install openpyxl

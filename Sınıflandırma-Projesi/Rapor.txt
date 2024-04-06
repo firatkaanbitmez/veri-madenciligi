@@ -48,26 +48,26 @@ Test verisi, 20 adet köşe yazısından oluşmaktadır. Her bir test yazısı, 
 5. Sonuçlar
 Test verisi, modelin tahmin etmesi için kullanıldıktan sonra, her bir test yazısının tahmin edilen yazarı elde edilmiştir. Tahmin edilen yazarlar, aşağıdaki gibidir:
 
-test1.txt: yazar3
+test1.txt: yazar1
 test2.txt: yazar1
-test3.txt: yazar5
-test4.txt: yazar2
-test5.txt: yazar4
-test6.txt: yazar3
-test7.txt: yazar1
-test8.txt: yazar5
-test9.txt: yazar2
-test10.txt: yazar4
+test3.txt: yazar1
+test4.txt: yazar1
+test5.txt: yazar2
+test6.txt: yazar2
+test7.txt: yazar2
+test8.txt: yazar2
+test9.txt: yazar3
+test10.txt: yazar3
 test11.txt: yazar3
-test12.txt: yazar1
-test13.txt: yazar5
-test14.txt: yazar2
+test12.txt: yazar3
+test13.txt: yazar4
+test14.txt: yazar4
 test15.txt: yazar4
-test16.txt: yazar3
-test17.txt: yazar1
+test16.txt: yazar4
+test17.txt: yazar5
 test18.txt: yazar5
-test19.txt: yazar2
-test20.txt: yazar4
+test19.txt: yazar5
+test20.txt: yazar5
 Tahmin edilen yazarlar, istatiksel araştırmalar için kullanılabilir. Örneğin, confusion matrisi oluşturulabilir ve bütün 120 tane köşe yazısının gerçek ve tahmini yazarlarını gösteren bir tablo elde edilebilir.
 
 6. Kod
