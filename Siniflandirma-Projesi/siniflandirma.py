@@ -67,11 +67,11 @@ def main():
     corpus = []  # Köşe yazıları burada toplanacak
     labels = []  # Köşe yazarlarının isimleri burada toplanacak
 
-    stop_words_file = "C:\\Users\\FIRAT\\Desktop\\myProject\\veri-madenciligi\\Sınıflandırma-Projesi\\stopword.txt"
+    stop_words_file = "C:\\Users\FIRAT\Desktop\\myProject\\veri-madenciligi\\Siniflandirma-Projesi\\stopword.txt"
     preprocessor = ColumnBasedPreprocessor(stop_words_file)
     
     # Veri yollarını belirt
-    data_folder = "veri-madenciligi/Sınıflandırma-Projesi/data"
+    data_folder = "veri-madenciligi/Siniflandirma-Projesi/data"
     
     # Tüm yazar klasörlerini dolaş
     for yazar_klasoru in os.listdir(data_folder):
