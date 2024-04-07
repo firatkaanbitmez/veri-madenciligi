@@ -16,11 +16,11 @@ data_folder = "C:/Users/FIRAT/Desktop/myProject/veri-madenciligi/Siniflandirma-P
 test_data_folder = "C:/Users/FIRAT/Desktop/myProject/veri-madenciligi/Siniflandirma-Projesi/testyazar"
 stopwords_path = "C:/Users/FIRAT/Desktop/myProject/veri-madenciligi/Siniflandirma-Projesi/stopword.txt"
 
-# Stop word dosyasını okuyarak stop word listesini oluşturun
+# Stop word dosyasını okuyarak, metinlerdeki gereksiz kelimeleri filtrelemek için bir stop word listesi
 with open(stopwords_path, "r", encoding="utf-8") as stopwords_file:
     stop_words = stopwords_file.read().splitlines()
 
-# Eğitim verisi için bir sözlük oluşturun
+# Eğitim verisi için bir defaultdict oluşturuyoruz. Bu, her yazarın makalelerinin bir listesini saklamak için kullanılacaktır.
 training_data = defaultdict(list)
 
 # Eğitim verisini okuyun ve temizleyin
@@ -33,17 +33,18 @@ for author_folder in os.listdir(data_folder):
             with open(file_path, "r", encoding="utf-8") as file:
                 text = file.read()
                 # Metin temizleme işlemleri
-                cleaned_text = re.sub(r'\W', ' ', text)  
-                cleaned_text = re.sub(r'\d+', ' ', cleaned_text) 
-                cleaned_text = cleaned_text.lower()  
-                cleaned_text = ' '.join([word for word in cleaned_text.split() if word not in stop_words])
-                # Kök bulma işlemi
+                cleaned_text = re.sub(r'\W', ' ', text)   #Noktalama işaretlerinin kaldırılması
+                cleaned_text = re.sub(r'\d+', ' ', cleaned_text) #Sayıların kaldırılması
+                cleaned_text = cleaned_text.lower()   #Metnin küçük harflere dönüştürülmesi
+                cleaned_text = ' '.join([word for word in cleaned_text.split() if word not in stop_words]) #Stop words'lerin kaldırılması
+                # Türkçe kök bulma işlemi
                 stemmer = TurkishStemmer()
                 cleaned_text = ' '.join([stemmer.stemWord(word) for word in cleaned_text.split()])
                 # Eğitim verisine temizlenmiş metni ekleyin
                 training_data[author_name].append(cleaned_text)
 
-# Eğitim ve test verilerini hazırlayın
+# Eğitim ve test verilerini hazırlanması
+#Eğitim verileri (X) ve etiketleri (y) oluşturuluyor. Burada, metinler X listesine eklenirken, her metnin etiketi y listesine ekleniyor.
 X = []
 y = []
 for author, texts in training_data.items():
@@ -51,12 +52,14 @@ for author, texts in training_data.items():
     y.extend([author] * len(texts))
 
 # Model oluşturma
+#Pipeline, ardışık işlemleri sıralı olarak gerçekleştirmenizi sağlar. Bu durumda, TF-IDF vektörleme işlemi ve SVC (Support Vector Classifier) sınıflandırma algoritması sırayla uygulanır.
 model = Pipeline([
     ('tfidf', TfidfVectorizer()),
     ('classifier', SVC())  
 ])
 
 # GridSearchCV ile en iyi parametreleri bulma
+#GridSearchCV, bir model için en iyi hiperparametreleri bulmanızı sağlayan bir cross-validation aracıdır. Bu durumda, SVC için C, gamma ve kernel parametreleri için farklı değerler denenecek ve en iyi parametreler bulunacaktır.
 param_grid = {
     'classifier__C': [0.1, 1, 10, 100],
     'classifier__gamma': [1, 0.1, 0.01, 0.001],
@@ -73,16 +76,17 @@ print("En iyi skor:", grid_search.best_score_)
 print("\n")
 
 best_model = grid_search.best_estimator_
-
+#En iyi model seçilir ve eğitim verisi ile eğitilir. Ayrıca, doğrulama verisi için train_test_split kullanılarak veri seti bölünür.
 # Eğitim ve doğrulama verisi için modeli eğitin
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
 best_model.fit(X_train, y_train)
 
-# Modelin performansını değerlendirme
+
+#Modelin performansını değerlendirmek için confusion matrix hesaplanır.
 y_pred = best_model.predict(X_val)
 conf_matrix = confusion_matrix(y_val, y_pred)
 
-# Confusion matrix görselleştirme
+#Confusion matrix, görselleştirilerek daha anlaşılır hale getirilir.
 plt.figure(figsize=(10, 8))
 sns.heatmap(conf_matrix, annot=True, cmap="Blues", fmt="d", xticklabels=best_model.classes_, yticklabels=best_model.classes_)
 plt.xlabel('Tahmin Edilen')
