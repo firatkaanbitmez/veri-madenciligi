@@ -1,15 +1,15 @@
 from collections import defaultdict
 import os
-from matplotlib import pyplot as plt
-import numpy as np
-import pandas as pd
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix, classification_report
 import re
+import numpy as np
 from snowballstemmer import TurkishStemmer
+from sklearn.pipeline import Pipeline
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
+from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.svm import SVC
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 # Veri klasörlerinin yolu
 data_folder = "C:/Users/FIRAT/Desktop/myProject/veri-madenciligi/Siniflandirma-Projesi/data"
@@ -17,7 +17,7 @@ data_folder = "C:/Users/FIRAT/Desktop/myProject/veri-madenciligi/Siniflandirma-P
 # Test dosyalarının yolu
 test_data_folder = "C:/Users/FIRAT/Desktop/myProject/veri-madenciligi/Siniflandirma-Projesi/testyazar"
 
-# Stop words listesinin yolunu belirtin
+# Stop words listesinin yolu
 stopwords_path = "C:/Users/FIRAT/Desktop/myProject/veri-madenciligi/Siniflandirma-Projesi/stopword.txt"
 
 # Stop words listesini yükle
@@ -40,11 +40,6 @@ for author_folder in os.listdir(data_folder):
                 cleaned_text = re.sub(r'\W', ' ', text)  # Noktalama işaretlerini temizle
                 cleaned_text = re.sub(r'\d+', ' ', cleaned_text)  # Rakamları temizle
                 cleaned_text = cleaned_text.lower()  # Küçük harfe dönüştür
-                # İleri düzey ön işleme adımları
-                # Tokenizasyon ve kök analizi gibi işlemler burada yapılabilir
-                # Özellik Mühendisliği
-                # Metin özelliklerini artırarak modelin performansını artırın
-                # Örneğin, metnin uzunluğu, cümle sayısı, özel karakterlerin sayısı gibi özellikler eklenebilir
                 
                 # Stop words'leri kaldırma
                 cleaned_text = ' '.join([word for word in cleaned_text.split() if word not in stop_words])
@@ -62,40 +57,50 @@ for author, texts in training_data.items():
     X.extend(texts)
     y.extend([author] * len(texts))
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Model oluşturma
+model = Pipeline([
+    ('tfidf', TfidfVectorizer()),
+    ('classifier', SVC())  # SVM kullanımı
+])
 
-# TF-IDF vektörleme
-vectorizer = TfidfVectorizer(stop_words=stop_words)
-X_train_vectorized = vectorizer.fit_transform(X_train)
-X_test_vectorized = vectorizer.transform(X_test)
+# Model için parametre aralığını belirle
+param_grid = {
+    'classifier__C': [0.1, 1, 10, 100],
+    'classifier__gamma': [1, 0.1, 0.01, 0.001],
+    'classifier__kernel': ['rbf', 'linear', 'poly', 'sigmoid']
+}
 
-# Modeli eğit
-model = MultinomialNB()
-model.fit(X_train_vectorized, y_train)
+# GridSearchCV ile en iyi parametreleri bul
+grid_search = GridSearchCV(model, param_grid, cv=5)
+grid_search.fit(X, y)
 
-# Test verisi üzerinde tahmin yap
-y_pred = model.predict(X_test_vectorized)
+print("En iyi parametreler:", grid_search.best_params_)
+print("En iyi skor:", grid_search.best_score_)
+
+# Modeli en iyi parametrelerle tekrar eğit
+best_model = grid_search.best_estimator_
+
+# Modeli eğitim ve doğrulama verileriyle eğitin
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+best_model.fit(X_train, y_train)
+
+# Test verileri üzerinde tahmin yap
+y_pred = best_model.predict(X_val)
 
 # Confusion matrix oluştur
-conf_matrix = confusion_matrix(y_test, y_pred)
-
-# Confusion matrix'i düzelt
-sorted_classes = sorted(model.classes_)
-correct_conf_matrix = np.zeros((len(sorted_classes), len(sorted_classes)), dtype=np.int32)
-for i, row in enumerate(conf_matrix):
-    correct_conf_matrix[i] = row[np.argsort(sorted_classes)]
+conf_matrix = confusion_matrix(y_val, y_pred)
 
 # Confusion matrix'i görselleştirme
 plt.figure(figsize=(10, 8))
-sns.heatmap(correct_conf_matrix, annot=True, cmap="Blues", fmt="d", xticklabels=sorted_classes, yticklabels=sorted_classes)
+sns.heatmap(conf_matrix, annot=True, cmap="Blues", fmt="d", xticklabels=best_model.classes_, yticklabels=best_model.classes_)
 plt.xlabel('Tahmin Edilen')
 plt.ylabel('Gerçek Değer')
 plt.title('Confusion Matrix')
 plt.show()
 
-# Confusion matrix'i terminalden de çıktı olarak al
-print("Confusion Matrix:")
-print(correct_conf_matrix)
+# Sınıflandırma raporu
+print("Sınıflandırma Raporu:")
+print(classification_report(y_val, y_pred))
 
 # Test verileri için tahmin yap
 for file_name in os.listdir(test_data_folder):
@@ -112,5 +117,5 @@ for file_name in os.listdir(test_data_folder):
         stemmer = TurkishStemmer()
         cleaned_text = ' '.join([stemmer.stemWord(word) for word in cleaned_text.split()])
         # Tahmin yap
-        prediction = model.predict(vectorizer.transform([cleaned_text]))[0]
+        prediction = best_model.predict([cleaned_text])[0]
         print(f"{file_name}: Gerçek Yazar: {file_name.split('.')[0]}, Tahmin Edilen Yazar: {prediction}")
