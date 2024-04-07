@@ -130,7 +130,7 @@ C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyaza
 C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test19.txt
 C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test20.txt
 
-
+MÜKKEMEL SONUÇ matrisi
 [[4 0 0 0 0]
  [0 4 0 0 0]
  [0 0 4 0 0]
