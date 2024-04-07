@@ -25,6 +25,7 @@ xpip install xgboost
 
  pip install openpyxl
 
+pip install snowballstemmer seaborn
 
 pip install scikit-learn
 pip install --upgrade setuptools

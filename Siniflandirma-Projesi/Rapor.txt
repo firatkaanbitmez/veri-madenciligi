@@ -11,37 +11,34 @@ gerçekleştirdiğinizi, modeli nasıl oluşturduğunuzu, elde ettiğiniz sonuç
 1. Veri Kümesi
 İlk olarak, beş farklı köşe yazarının en az 20 köşe yazısını içeren bir eğitim kümesi oluşturuldu. Bu eğitim kümesi, aşağıdaki dizinde bulunmaktadır:
 
-
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Veri-Test-kümesi
 Her yazar için ayrı bir klasör oluşturulmuştur ve her klasörde 20 adet köşe yazısı bulunmaktadır. Yazar klasörleri ve içerdikleri dosyalar aşağıdaki gibidir:
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar2
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar3
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar4
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar5
 
- C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc1.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc2.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc3.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc4.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc5.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc6.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc7.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc8.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc9.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc10.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc11.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc12.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc13.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc14.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc15.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc16.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc17.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc18.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc19.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\yazar1\doc20.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar2
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar3
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar4
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar5
+
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc1.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc2.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc3.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc4.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc5.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc6.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc7.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc8.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc9.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc10.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc11.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc12.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc13.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc14.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc15.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc16.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc17.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc18.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc19.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\data\yazar1\doc20.txt
 
 yazar1
 doc1.txt
@@ -71,7 +68,7 @@ Her bir köşe yazısının içerdiği metinler okunmuş ve temizlenmiştir. Tem
 Temizlenen metinler, her bir kelimenin kök formuna çevrilmiştir. Bu işlem için Zemberek kütüphanesi kullanılmıştır.
 Her bir köşe yazısının içerdiği kelimeler, bir kelime haznesine eklenmiştir.
 
-Stopword.txt dosyası veritemizleme kullanmak için C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\stopword.txt
+Stopword.txt dosyası veritemizleme kullanmak için C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\stopword.txt
 
 
 3. Model Oluşturma
@@ -83,65 +80,64 @@ Model oluşturma aşama sonrasında, her bir yazar için bir vektör elde edilmi
 Test verisi, aşağıdaki dizinde bulunmaktadır:
 
 
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Veri-Test-kümesi\testyazar
-Test verisi, 20 adet köşe yazısından oluşmaktadır. Her bir test yazısı, modelin tahmin etmesi için kullanılmıştır.
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar
+
+Test verisi, 20 adet köşe yazısından oluşmaktadır. Her bir test dosyası bir yazara aittir(yazar1,yazar2,yazar3,yazar4,yazar5)
 
 5. Sonuçlar
 Test verisi, modelin tahmin etmesi için kullanıldıktan sonra, her bir test yazısının tahmin edilen yazarı elde edilmiştir. Tahmin edilen yazarlar, aşağıdaki gibidir:
 
-test1.txt yazarı yazar1
-test2.txt yazarı yazar1
-test3.txt yazarı yazar1
-test4.txt yazarı yazar1
-test5.txt yazarı yazar2
-test6.txt yazarı yazar2
-test7.txt yazarı yazar2
-test8.txt yazarı yazar2
-test9.txt yazarı yazar3
-test10.txt yazarı yazar3
-test11.txt yazarı yazar3
-test12.txt yazarı yazar3
-test13.txt yazarı yazar4
-test14.txt yazarı yazar4
-test15.txt yazarı yazar4
-test16.txt yazarı yazar4
-test17.txt yazarı yazar5
-test18.txt yazarı yazar5
-test19.txt yazarı yazar5
-test20.txt yazarı yazar5
+    test1.txt gerçek yazarı yazar1
+    test2.txt gerçek yazarı yazar1
+    test3.txt gerçek yazarı yazar1
+    test4.txt gerçek yazarı yazar1
+    test5.txt gerçek yazarı yazar2
+    test6.txt gerçek yazarı yazar2
+    test7.txt gerçek yazarı yazar2
+    test8.txt gerçek yazarı yazar2
+    test9.txt gerçek yazarı yazar3
+    test10.txt gerçek yazarı yazar3
+    test11.txt gerçek yazarı yazar3
+    test12.txt gerçek yazarı yazar3
+    test13.txt gerçek yazarı yazar4
+    test14.txt gerçek yazarı yazar4
+    test15.txt gerçek yazarı yazar4
+    test16.txt gerçek yazarı yazar4
+    test17.txt gerçek yazarı yazar5
+    test18.txt gerçek yazarı yazar5
+    test19.txt gerçek yazarı yazar5
+    test20.txt gerçek yazarı yazar5
 Tahmin edilen yazarlar, istatiksel araştırmalar için kullanılabilir. Örneğin, confusion matrisi oluşturulabilir ve bütün 120 tane köşe yazısının gerçek ve tahmini yazarlarını gösteren bir tablo elde edilebilir.
 
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test1.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test2.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test3.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test4.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test5.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test6.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test7.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test8.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test9.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test10.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test11.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test12.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test13.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test14.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test15.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test16.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test17.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test18.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test19.txt
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Sınıflandırma-Projesi\Kodlama\data\testyazar\test20.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test1.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test2.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test3.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test4.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test5.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test6.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test7.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test8.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test9.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test10.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test11.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test12.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test13.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test14.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test15.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test16.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test17.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test18.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test19.txt
+C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar\test20.txt
+
+
+[[4 0 0 0 0]
+ [0 4 0 0 0]
+ [0 0 4 0 0]
+ [0 0 0 4 0]
+ [0 0 0 0 4]]    
 6. Kod
 Projenin kodu, aşağıdaki GitHub deposunda bulunmaktadır:
 
-GitHub Deposu
-
-Projenin kodu, Python dilinde yazılmıştır ve Zemberek kütüphanesi kullanılmıştır. Projenin kodu, aşağıdaki dosyalarda bulunmaktadır:
-
-veri_temizle.py: Veri kümesinin temizlenmesi için kullanılan kod dosyasıdır.
-veri_vektorelestir.py: Veri kümesinin vektör haline getirilmesi için kullanılan kod dosyasıdır.
-model_olustur.py: Modelin oluşturulması için kullanılan kod dosyasıdır.
-test_yazilar.py: Test yazılarının modelin tahmin etmesi için kullanılan kod dosyasıdır.
-istatistikler.py: Tahmin edilen yazarların istatiksel araştırması için kullanılan kod dosyasıdır.
 7. Sonuç
 Bu projede, beş farklı köşe yazarının en az 20 köşe yazısını içeren bir eğitim kümesi oluşturulmuştur. Bu eğitim kümesi, önişleme adımlarının uygulanması ve modelin oluşturulması sonrasında, test verisi için kullanılmıştır. Test verisi, modelin tahmin etmesi için kullanılmıştır ve her bir test yazısının tahmin edilen yazarı elde edilmiştir. Tahmin edilen yazarlar, istatiksel araştırmalar için kullanılabilir.
