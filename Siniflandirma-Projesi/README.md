@@ -1,114 +1,45 @@
-# veri-madenciligi Sınıflandırma Projesi
+# Köşe Yazarı Sınıflandırma Projesi
 
-Proje Detayları
-Öncelikle, seçeceğiniz beş farklı köşe yazarına ait  ve her bir yazarın minimum 20 köşe yazısını 
-içerecek şekilde bir eğitim kümesi oluşturmanız beklenmektedir. Bu eğitim kümesini kullanarak bir model geliştiriniz. 
-Geliştirdiğiniz modele yeni bir köşe yazısı verildiğinde bu yazının hangi yazara ait olduğunu tespit eden veri madenciliği 
-projesini gerçekleyiniz. Modeli geliştirirken Zemberek kütüphanesinden yararlanabilirsiniz.
-Ödevler teslim edilirken sisteme yüklenecek dosyalar: Rapor ve Kod dosyası
-Raporu hazırlarken, model için kullandığınız/oluşturduğunuz veri kümesini, burada ne tür önişleme adımlarını 
-gerçekleştirdiğinizi, modeli nasıl oluşturduğunuzu, elde ettiğiniz sonuçların ne olduğunu detaylandırmanız ve yorumlamanız gerekmektedir.
+Bu proje, köşe yazarlarının yazılarını sınıflandırmak için bir veri madenciliği yaklaşımını kullanır. Temel amacı, bir yazarın yazı tarzına dayanarak yeni bir köşe yazısının hangi yazar tarafından yazıldığını tahmin etmektir. Bu, metin sınıflandırma problemlerine tipik bir örnektir ve Zemberek kütüphanesi kullanılarak Türkçe metinler üzerinde gerçekleştirilmiştir.
 
+## Proje Açıklaması
 
-1. Veri Kümesi
-İlk olarak, beş farklı köşe yazarının en az 20 köşe yazısını içeren bir eğitim kümesi oluşturuldu. Bu eğitim kümesi, aşağıdaki dizinde bulunmaktadır:
+Proje adımları şu şekildedir:
 
-Her yazar için ayrı bir klasör oluşturulmuştur ve her klasörde 20 adet köşe yazısı bulunmaktadır. Yazar klasörleri ve içerdikleri dosyalar aşağıdaki gibidir:
-yazar1
-doc1.txt
-doc2.txt +...
-doc20.txt
-yazar2
-doc1.txt
-doc2.txt +...
-doc20.txt
-yazar3
-doc1.txt
-doc2.txt +...
-doc20.txt
-yazar4
-doc1.txt
-doc2.txt +...
-doc20.txt
-yazar5
-doc1.txt
-doc2.txt +...
-doc20.txt
+1. **Veri Toplama**: Beş farklı köşe yazarına ait en az 20 köşe yazısını içeren bir eğitim kümesi oluşturulmuştur. Her bir yazar için ayrı bir klasörde yazılar bulunmaktadır.
 
-2. Önişleme Adımları
-Önişleme adımları, her bir köşe yazısının temizlenmesi ve önişleme işlemlerinin uygulanması için gerçekleştirilmiştir. Önişleme adımları aşağıdaki gibidir:
+2. **Önişleme Adımları**: Metin temizleme ve kelime köklerine çevirme gibi önişleme adımları gerçekleştirilmiştir. Bu adımlar, metin verilerini işlemeye hazır hale getirmek için yapılmıştır.
 
-Her bir köşe yazısının içerdiği metinler okunmuş ve temizlenmiştir. Temizleme işlemi sırasında, noktalama işaretleri, sayılar ve özel karakterler kaldırılmıştır.
-Temizlenen metinler, her bir kelimenin kök formuna çevrilmiştir. Bu işlem için Zemberek kütüphanesi kullanılmıştır.
-Her bir köşe yazısının içerdiği kelimeler, bir kelime haznesine eklenmiştir.
+3. **Model Oluşturma**: Veri kümesindeki her bir yazının içeriği vektörlere dönüştürülmüş ve bir sınıflandırma modeli oluşturulmuştur. Bu model, yeni bir yazı verildiğinde hangi yazar tarafından yazıldığını tahmin etmek için kullanılacaktır.
 
-Stopword.txt dosyası veritemizleme kullanmak için C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\stopword.txt
+4. **Test ve Sonuçlar**: Test verisi kullanılarak modelin başarımı ölçülmüş ve tahmin edilen yazarlar gerçek yazarlarla karşılaştırılmıştır. Bu adımda confusion matrisi gibi istatistiksel analizler yapılmıştır.
 
+## Proje Dosyaları
 
-3. Model Oluşturma
-Model oluşturma aşamasında, eğitim kümesindeki her bir köşe yazısının içerdiği kelimeler, bir vektör haline getirilmiştir. Vektörler, her bir kelimenin frekansının hesaplanmasıyla oluşturulmuştur. Vektörler, bir matris halinde saklanmıştır.
+- **Veri Klasörü**: Eğitim verisi için kullanılan köşe yazıları burada bulunmaktadır.
+- **Test Klasörü**: Modelin performansını ölçmek için kullanılan test verisi burada bulunmaktadır.
+- **Kod Dosyası**: Projenin Python kodları bu dosyada bulunmaktadır.
+- **Rapor**: Projenin detaylı raporu ve sonuçlarına bu dosyadan ulaşabilirsiniz.
 
-Model oluşturma aşama sonrasında, her bir yazar için bir vektör elde edilmiştir. Bu vektörler, her bir yazarın yazı stilini temsil etmektedir.
+## Nasıl Çalıştırılır
 
-4. Test Verisi
-Test verisi, aşağıdaki dizinde bulunmaktadır:
+1. Depoyu klonlayın: `git clone https://github.com/kullanici/proje.git`
+2. Gerekli kütüphaneleri yükleyin: `pip install -r requirements.txt`
+3. Kodu çalıştırın: `python main.py`
 
+## Gerekli Kütüphaneler
 
-C:\Users\FIRAT\Desktop\myProject\veri-madenciligi\Siniflandirma-Projesi\testyazar
+- regex
+- numpy
+- snowballstemmer
+- scikit-learn
+- seaborn
+- matplotlib
 
-Test verisi, 20 adet köşe yazısından oluşmaktadır. Her bir test dosyası bir yazara aittir(yazar1,yazar2,yazar3,yazar4,yazar5)
+## Katkıda Bulunma
 
-5. Sonuçlar
-Test verisi, modelin tahmin etmesi için kullanıldıktan sonra, her bir test yazısının tahmin edilen yazarı elde edilmiştir. Tahmin edilen yazarlar, aşağıdaki gibidir:
-   test1.txt gerçek yazarı yazar1
-    test2.txt gerçek yazarı yazar1
-    test3.txt gerçek yazarı yazar1
-    test4.txt gerçek yazarı yazar1
-    test5.txt gerçek yazarı yazar2
-    test6.txt gerçek yazarı yazar2
-    test7.txt gerçek yazarı yazar2
-    test8.txt gerçek yazarı yazar2
-    test9.txt gerçek yazarı yazar3
-    test10.txt gerçek yazarı yazar3
-    test11.txt gerçek yazarı yazar3
-    test12.txt gerçek yazarı yazar3
-    test13.txt gerçek yazarı yazar4
-    test14.txt gerçek yazarı yazar4
-    test15.txt gerçek yazarı yazar4
-    test16.txt gerçek yazarı yazar4
-    test17.txt gerçek yazarı yazar5
-    test18.txt gerçek yazarı yazar5
-    test19.txt gerçek yazarı yazar5
-    test20.txt gerçek yazarı yazar5
-Tahmin edilen yazarlar, istatiksel araştırmalar için kullanılabilir. Örneğin, confusion matrisi oluşturulabilir ve bütün 120 tane köşe yazısının gerçek ve tahmini yazarlarını gösteren bir tablo elde edilebilir.
-MÜKKEMEL SONUÇ matrisi
-[[4 0 0 0 0]
- [0 4 0 0 0]
- [0 0 4 0 0]
- [0 0 0 4 0]
- [0 0 0 0 4]]    
-6. Kod
-Projenin kodu, aşağıdaki GitHub deposunda bulunmaktadır:
+Projeye katkıda bulunmak isterseniz, lütfen bir çekme isteği açın veya bir sorun bildirin. Her türlü katkıya açığız!
 
-7. Sonuç
-Bu projede, beş farklı köşe yazarının en az 20 köşe yazısını içeren bir eğitim kümesi oluşturulmuştur. Bu eğitim kümesi, önişleme adımlarının uygulanması ve modelin oluşturulması sonrasında, test verisi için kullanılmıştır. Test verisi, modelin tahmin etmesi için kullanılmıştır ve her bir test yazısının tahmin edilen yazarı elde edilmiştir. Tahmin edilen yazarlar, istatiksel araştırmalar için kullanılabilir.
+## Lisans
 
-*****************
-
-Bir sorunla karşılaşıyorsanız Muhtemelen Kütüphane eksiktir yada Dosya yolu yanlış olarak algılıyordur. 
-Programı masaüstünde Açın yada Dosya yollarını kendinize göre seçin
-
-Varsayılan olarak dosya yolu böyledir. 
-data_folder = "./data"
-test_data_folder = "./test"
-stopwords_path = "./stopword.txt"
-
-
-Gerekli Kütüphaneler
-
-pip install regex
-pip install numpy
-pip install snowballstemmer
-pip install scikit-learn
-pip install seaborn
-pip install matplotlib
+Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için [LICENSE](LICENSE) dosyasına göz atabilirsiniz.
