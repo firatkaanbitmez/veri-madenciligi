@@ -16,16 +16,16 @@ Proje adımları şu şekildedir:
 
 ## Proje Dosyaları
 
-- **Veri Klasörü**: Eğitim verisi için kullanılan köşe yazıları burada bulunmaktadır.
+- **Data Klasörü**: Eğitim verisi için kullanılan köşe yazıları burada bulunmaktadır.
 - **Test Klasörü**: Modelin performansını ölçmek için kullanılan test verisi burada bulunmaktadır.
 - **Kod Dosyası**: Projenin Python kodları bu dosyada bulunmaktadır.
 - **Rapor**: Projenin detaylı raporu ve sonuçlarına bu dosyadan ulaşabilirsiniz.
 
 ## Nasıl Çalıştırılır
 
-1. Depoyu klonlayın: `git clone https://github.com/kullanici/proje.git`
-2. Gerekli kütüphaneleri yükleyin: `pip install -r requirements.txt`
-3. Kodu çalıştırın: `python main.py`
+1. Depoyu klonlayın: `https://github.com/firatkaanbitmez/veri-madenciligi.git`
+2. Gerekli kütüphaneleri yükleyin: `pip install Kütüphane_Adi`
+3. Kodu çalıştırın: `python3 siniflandirma-projesi.py`
 
 ## Gerekli Kütüphaneler
 
@@ -36,10 +36,3 @@ Proje adımları şu şekildedir:
 - seaborn
 - matplotlib
 
-## Katkıda Bulunma
-
-Projeye katkıda bulunmak isterseniz, lütfen bir çekme isteği açın veya bir sorun bildirin. Her türlü katkıya açığız!
-
-## Lisans
-
-Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için [LICENSE](LICENSE) dosyasına göz atabilirsiniz.
