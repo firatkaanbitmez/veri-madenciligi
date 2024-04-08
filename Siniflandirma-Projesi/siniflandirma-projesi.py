@@ -122,3 +122,4 @@ for i, file_name in enumerate(sorted(os.listdir(test_data_folder), key=lambda x:
 # Tahminleri detaylı olarak yazdırma
 for file_name, prediction in predictions:
     print(f"{file_name}: Tahmin Edilen Yazar: {prediction}")
+
