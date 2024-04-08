@@ -1,65 +1,11 @@
+Bu başlık biraz tuhaf oldu. Mantıkta bu tarz ifadelere totoloji (aynı şeyi farklı bir şey söylüyormuş gibi tekrar etmek) deniyor galiba. “Ödemeler Dengesi” (Balance of Payments) eğer bir bilanço ise zaten dengede demektir. Bizim İtalyancadan ödünç aldığımız bilanço (bilancio) sözcüğünün İngilizcesi “Balance Sheet”dir. Yani “Denge Tablosu”dur. Aktifi, pasifine eşit olmayan bilanço zaten olmaz. “Ödemeler Dengesi” tablosu bir ülkenin dış dünya ile yaptığı ticari ve mali işlemlerin icmalidir. Bu tablo esas olarak iki bölümden oluşur. Birinci bölüm “Cari İşlemler” (Current Account) ikinci bölüm “Sermaye Hesabı” (Capital Account) dır. Cari işlemler a) ülkenin diğer ülkelerle yaptığı mal ve hizmet alışverişlerinin, b) dış veya dışa yapılan yatırımlarından gelen veya giden gelirlerin, c) sınır geçen havalelerin (mesela işçi havaleleri) net toplamından oluşur. Buna ülkenin “Kâr-Zarar” tablosu olarak bakılabilir. Eğer çıkışlar, girişlerden fazlaysa “Cari Açık” yani zarar; azsa “Cari Fazla” yani kâr var denebilir. Sermaye Hesabı ise o ülkenin finansal işlemleri ile Merkez Bankası rezerv değişimlerini kapsar. Cari işlemler ile sermaye hesaplarının bakiyeleri birbirinin ayna simetriğidir. Yani denktir. Denk (eşit) değilseler aradaki farka “Net Hata ve Noksan” denir. Bu da hesaba katılınca sonuç sıfır olur. Bu bir cebirsel özdeşliktir.
 
-Hz. Yusuf’u kıskanç kardeşleri kuyuya atmıştı, Allah’ın meleği Cebrail geldi, Yusuf’u kuyudan kurtardı. Cumhurbaşkanın siyasi kardeşleri (ittifak ortakları) ona destek verdiler, bu destekle oyunu yüzde 52’ye çıkardı, efsanesini devam ettirdi. Seçim günü geldi. Efsane, siyasi kardeşlerinin desteğiyle yarattığı dipsiz kuyulara kendisinin itildiğini yeni gördü.
+FİNANSE EDİLMEMİŞ CARİ AÇIK OLAMAZ
 
-Çırpınıyor.
+Mektepli veya alaylı iktisatçılarının bir kısmı “finanse edilebildiği sürece cari açık sorun değildir” derler. Cari açık sorunsa, sorundur. Bu aslında cari açık sorun değildir demektir. Çünkü finanse edilemezse zaten cari açık verilemez. Bankadan ödünç alıp satıcıya peşin para vermek ne kadar “dış borç almak” ise malı satıcıdan veresiye (vadeli) almak da o kadar “dış borç almaktır”. Bu zırvalamanın bir gerekçesi vardır. Böyle konuşanlar “cari açık, tasarruf açığıdır” tasarruf açığı yeteri kadar yatırım yapılamaması sonucunu doğurur. Dolaysıyla kalkınmak için yatırım, yatırım için yurt dışından borç almaya yani cari açık vermeye mecburuz derler. Bu ifadenin doğru olması için dış borçla sadece yatırım malı ithal ediyor olmak gerekir. Halbuki dış borcun çoğu bitmiş tüketim malı veya tüketim malı imalatında kullanılan aramalı ithalatında kullanılıyor. Doğrusu “cari açığın, tasarruf açığı değil, tüketim fazlası” olduğudur. Kalkınmak cari açık verildiğine inanıldığı için, Türkiye’nin ekonomi gündeminde cari açığı kapamak öncelikli bir sorun değildir. Öncelik, mecburiyetten verilen cari açığın nasıl finanse edileceğine dönüşmüştür. Gaye Erkan, bol dış borç bulurum dediği için MB Başkanı koltuğuna oturmuş, bulamayınca kalkmıştır.
 
-★★★
+KÜRESEL CARİ AÇIK HER ZAMAN SIFIRDIR
 
-Güncel bir dipsiz kuyu:
+Küresel “Cari İşlemler” hesabının bakiyesi sıfırdır. Bu sıfır olduğu için “Sermaye Hesabı”nın bakiyesi de sıfırdır. Çünkü her ithalat bir ihracat, her borç bir alacaktır. Cari İşlemler hesabı artı veren ülkelerde “yabancı para” (dolar diye okuyun) birikir. Çünkü uluslararası ekonominin çarkları, kendi parasıyla yılda 900 milyar dolar cari açık verebilen ABD’nin bu parayı “küresel ödemeler sistemine” şırıngalaması sayesinde dönmektedir. “Cari Fazla” veren ülkelerin merkez bankalarının derdi, sıfır hatta ABD enflasyonu kadar negatif getirili bu nakit dolarları nemalandırmaktır. Bunun için öncelikle doğrudan dış yatırım yapan girişimcilerini finanse ederler. Kalanıyla ABD’nin Hazine bonolarına, şirket hisse senetlerine ve özel tahvillere yatırım yaparlar. Bir kısmını da riskli ama getirisi yüksek “dış-borç-kolik” (bizim gibi) ülkelere verirler. Bu düzen sayesinde  bizim ekonomimiz de “sarhoş yürüyüşü” ile yoluna devam etmektedir. Kahin iktisatçılarımız yıllardır bizi kurt geliyor diye uyarıyor. Bir gün mutlaka haklı çıkacaklardır. 
 
-Efsane lider Tayyip Erdoğan’ın Ankara Büyükşehir Belediye Başkan adayı Turgut Altınok, mal varlığını şöyle sayıp açıkladı: 22 arsam, 11 konutum, 2 binam, 1 benzin istasyonum, 25 tarlam, aile şirketimiz üzerine 67 ev, 5 dükkanımız var. Babadan zenginiz dedi. Bu kadar zengin, imkanları yüksek babanın 2 kızının da hiç sınava girmeden devlet kurumu RTÜK’de işe yerleştirildikleri ortaya çıktı. Baba; “kızlarım gidin arsalarımızı, tarlalarımızı, binalarımızı, benzin istasyonlarımızı yönetin, maaşınızı da oradan alın” demeyi akıl etmedi. 2 kızını RTÜK’ün aylıkçısı durumuna getirerek devleti dipsiz kuyu yaptı. Bu 2 hanım kız gibi milyonlarcası iktidardan torpilli devlete yerleşti, maaş alıyor. 
-
-★★★
-
-Tarihi bir dipsiz kuyu:
-
-2011 yılında Tayyip Erdoğan’ın partisinden belediye başkanı, İstanbul’u yönetiyordu. İstanbul’da Fatih Vatan Caddesi’ne cepheli üzerine inşaat yapılamaz bir yeşil alan vardı. Bu yeşil alanı bir şirket 25 milyon liraya satın aldı. Satıştan sonra efsane liderin partisinden belediye yönetimi o yeşil alana imar izni verdi. Partili iş adamı, arsasına imar izni veren İstanbul Büyükşehir Belediyesi’ne 25’e aldığı o arsayı  430 milyon liraya sattı. Arsayı satın alan belediye, tekrar imar değişikliğine gitti ve o arsayı yeniden yeşil alan yaptı. O yılın dolar kuru üzerinden hesaplandığında efsane liderin yönetiminde İstanbul’da sadece bir arsa üzerinden 117 milyon dolarlık bir dipsiz kuyu yaratılmış oldu.
-
-★★★
-
-Benzersiz bir dipsiz kuyu: Efsane lider Erdoğan, Balıkesir’e Merkez Havalimanı yapılmasını onayladı. Fizibilitesi yapıldı. Yılda 1 milyon yolcu kapasiteli Balıkesir Havalimanı, 30 milyon TL’ye bitecek diye yola çıkıldı 76.000.000 TL’ye (76 milyon) bitirildi. Ancak onu yapıp işletecek partili iş adamına 1.300.000 yolcu garantisi verildi. Havalimanı efsane liderin konuşması ile açıldı. 18 ay sonunda sonuç şöyleydi: 
-
-Yolcu kapasitesi: 
-
-1.000.000. 
-
-Verilen yolcu garantisi:
-
-1.300.000. 
-
-Gelen- giden yolcu: 
-
-0. (Sıfır) 
-
-İnen- kalkan uçak:
-
-0. (Sıfır).
-
-Böylesine dipsiz kuyunun dünyada benzeri yok.
-
-★★★
-
-Avanak kumbarası kuyu: Kütahya, Afyon, Uşak; 3 kente birden hizmet verecek Zafer Havalimanı, parti yandaşı özel şirkete; “hem yolcu garantisi- hem mutlaka kâr etme garantisi- hem de süre garantisi” vererek 50 milyon Euro’ya yaptırdı. Üç şehrimizin toplam nüfusu 1 milyon 678 bin kişiydi. Herkesin uçakla seyahat edeceği düşünülerek kapasite 1 milyon yolcu üzerine tutuldu. 50 milyon Euro’ya mâl edildi. Açılışı dualar okunarak yapıldı. 11 yıl geçti, hiçbir hedef tutmadı. Yıllık yaklaşık 800 bin yolcu garantisi verilmişti, yolcu sayısı yaklaşık 2.300 de kaldı. Gelmeyen yolcunun, inmeyen uçağın parasını devlet ödedi. Şirket 50 milyon Euro’ya mâl ettiği havalimanından 50 milyonunu ilk 10 yılda çıkardı. Daha 21 yıl işletme hakkı var. Böylesine “halkın vergilerini avanak kumbarası yapan” dipsiz kuyu örneğinin benzeri yok.
-
-★★★
-
-Emekliye kaynak yok dedi.
-
-Müteahhidin vergisini sildi.
-
-Yüzlerce dipsiz kuyu.
-
-Sayıp yazabilirim.
-
-Bu köşeye sığmaz.
-
-Tayyip Erdoğan, kendi yarattığı dipsiz kuyular yüzünden patlayan enflasyonun yoksullaştırdığı halk kitlelerine seçim meydanlarından; “... ne verirsek verelim dipsiz kuyu misali kayıp olup gidiyor...” diyerek; halktan uygulanan IMF benzeri reçeteye teslim olmalarını istiyor.
-
-Sandık günü geldi.
-
-Tayyip Efsanesi dipsiz kuyuda eridi! Sandıktan; “dipsiz kuyuların intikamı” çıkacaktır.
-
-
-
-50 gün doluyor!
-Göstere göstere gelen, bile bile göz yumulan, korunan, desteklenen yerli ortaklı yabancı altın arayıcı şirketin sebep olduğu Erzincan’daki büyük felaketin üzerinden 50 gün geçti. Devleti ele geçirmiş rüşvet yiyici ile rüşvet yedirici altıncı arasında kurulmuş “iktidar siyasetçisi- yüksek makam sahibi bürokrat- yabancı şirkete ortak edilmiş iktidara yakın iş adamı işbirlikçi yapı” içinde altıncı şirketi koruyan, kollayan, kolaylık gösterenlerin tamamından hesap sorulması gerekir. 9 işçinin bedenine ulaşılamadı. Acılı aileler bekliyor. Felaketin sorumlusu olarak şirkette mühendis, yönetici, idareci pozisyonunda olan 7 kişi tutuklandı, ancak yerli- yabancı ortaklığının sahiplerine ve onlara destek olan siyasetçi ve bürokratlar henüz ifadeye çağırılmadı. Şirketin baş temsilcisi ABD’den gelip hesap vermedi. Acılı aileler ve toplum vicdanı bekliyor.
+SON SÖZ: Kurt bu yıl da gelmeyebilir.

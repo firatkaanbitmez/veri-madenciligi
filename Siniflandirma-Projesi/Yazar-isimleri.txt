@@ -3,7 +3,7 @@
 yazar1 Ugur Dündar
 yazar2 Soner Yalçın
 yazar3 Murat Muratoğlu
-yazar4 Necati Doğru
+yazar4 Ege Cansen
 yazar5 Rahmi Turan
 
 
