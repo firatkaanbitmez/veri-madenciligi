@@ -1,0 +1,17 @@
+Bir sorunla karşılaşıyorsanız Muhtemelen Kütüphane eksiktir yada Dosya yolu yanlış olarak algılıyordur. 
+Programı masaüstünde Açın yada Dosya yollarını kendinize göre seçin
+
+Varsayılan olarak dosya yolu böyledir. 
+data_folder = "./data"
+test_data_folder = "./test"
+stopwords_path = "./stopword.txt"
+
+
+Gerekli Kütüphaneler
+
+pip install regex
+pip install numpy
+pip install snowballstemmer
+pip install scikit-learn
+pip install seaborn
+pip install matplotlib
