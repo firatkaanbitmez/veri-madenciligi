@@ -1,0 +1,6 @@
+Elde edeceğiniz bir veri seti üzerinde back propagation algoritmasını gerçekleyiniz. 
+Ödevler teslim edilirken sisteme yüklenecek dosyalar: Rapor ve Kod dosyası
+Raporu hazırlarken, model için kullandığınız/oluşturduğunuz veri kümesini, burada ne tür önişleme adımlarını gerçekleştirdiğinizi, modeli nasıl oluşturduğunuzu, elde ettiğiniz sonuçların ne olduğunu detaylandırmanız ve yorumlamanız gerekmektedir.
+
+
+NOT: İstenen algoritmayı kendiniz kodlayınız. Bu algoritmalar için hazır kütüphane kullanmayınız. Onun dışında hazır kütüphanelerden yararlanabilirsiniz.

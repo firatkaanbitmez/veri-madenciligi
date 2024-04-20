@@ -1,0 +1,4 @@
+Kendi seçeceğiniz iki boyutlu bir veri seti üzerinde SNN ve K-means algoritmasının başarımını karşılaştırmanız beklenmektedir. Algoritmaların kodlamasını kütüphane kullanmadan, kendiniz gerçekleyiniz.
+
+Ödevler teslim edilirken sisteme yüklenecek dosyalar: Rapor ve Kod dosyası
+Raporu hazırlarken, model için kullandığınız/oluşturduğunuz veri kümesini, burada ne tür önişleme adımlarını gerçekleştirdiğinizi, modeli nasıl oluşturduğunuzu, elde ettiğiniz sonuçların ne olduğunu detaylandırmanız ve iki yöntemin sonuçları için karşılaştırma yapmanız gerekmektedir.
