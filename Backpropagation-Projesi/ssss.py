@@ -15,7 +15,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 
 # Veri setini yükleme ve ön işleme
-veri_yolu = "C:\\Users\\FIRAT\\Desktop\\myProject\\veri-madenciligi\\Backpropagation-Projesi\\duke-breast-cancer.txt"
+veri_yolu = "C:\\Users\\FIRAT\\Desktop\\myProject\\veri-madenciligi\\Backpropagation-Projesi\\data.txt"
 veri = np.loadtxt(veri_yolu)
 print("Veri seti boyutu:", veri.shape)
 
@@ -120,8 +120,7 @@ for i in range(len(x_egitim)):
     geri_yayilim(gizli_katman, cikti_katman, one_hot_encoding[int(y_egitim[i])], -1, x_egitim[i])
 
 egitim_dogruluk_orani = egitim_dogru_sayisi / len(x_egitim)
-print("Eğitim doğruluğu: %s / %s (%.2f%%) " % (egitim_dogru_sayisi, len(x_egitim), 
-                                                                                         egitim_dogruluk_orani * 100))
+print("Eğitim doğruluğu: %s / %s (%.2f%%) " % (egitim_dogru_sayisi, len(x_egitim),  egitim_dogruluk_orani * 100))
 
 # Test
 test_dogru_sayisi = 0
@@ -132,5 +131,4 @@ for i in range(len(x_test)):
     test_dogru_sayisi += 1 if y_test[i] == np.argmax(cikti_katman) else 0
 
 test_dogruluk_orani = test_dogru_sayisi / len(x_test)
-print("Test doğruluğu: %s / %s (%.2f%%)" % (test_dogru_sayisi, len(x_test),
-                                                                                       test_dogruluk_orani * 100))
+print("Test doğruluğu: %s / %s (%.2f%%)" % (test_dogru_sayisi, len(x_test), test_dogruluk_orani * 100))
