@@ -12,12 +12,43 @@ meme kanseri teşhisini temsil eden 0 veya 1 etiketlerini içermektedir.
 """
 
 import numpy as np
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.neural_network import MLPClassifier
 
 # Veri setini yükleme ve ön işleme
 veri_yolu = "C:\\Users\\FIRAT\\Desktop\\myProject\\veri-madenciligi\\Backpropagation-Projesi\\data.txt"
 veri = np.loadtxt(veri_yolu)
 print("Veri seti boyutu:", veri.shape)
+
+# Eksik değerleri kontrol etme
+eksik_deger_sayisi = np.isnan(veri).sum()
+if eksik_deger_sayisi > 0:
+    print("Veri setinde eksik değerler bulunuyor.")
+
+# Aykırı değerleri kontrol etme
+Q1 = np.percentile(veri, 25, axis=0)
+Q3 = np.percentile(veri, 75, axis=0)
+IQR = Q3 - Q1
+aykiri_deger_sayisi = ((veri < (Q1 - 1.5 * IQR)) | (veri > (Q3 + 1.5 * IQR))).sum()
+if aykiri_deger_sayisi > 0:
+    print("Veri setinde aykırı değerler bulunuyor.")
+
+# Özellikler (girişler) ve etiketler (çıktılar) ayırma
+etiketler = veri[:, -1]
+ozellikler = veri[:, :-1]
+
+# Normalizasyon
+scaler = StandardScaler()
+ozellikler_normal = scaler.fit_transform(ozellikler)
+
+# Veri setini eğitim, doğrulama ve test veri setlerine bölmek
+x_egitim, x_test, y_egitim, y_test = train_test_split(ozellikler_normal, etiketler, test_size=0.2, random_state=42)
+x_egitim, x_dogrulama, y_egitim, y_dogrulama = train_test_split(x_egitim, y_egitim, test_size=0.25, random_state=42)  # %60 train, %20 validation, %20 test
+
+print("Eğitim veri seti boyutu:", x_egitim.shape, "Doğrulama veri seti boyutu:", x_dogrulama.shape, "Test veri seti boyutu:", x_test.shape)
 
 # Verileri karıştırma ve özellikleri ile etiketleri ayırma
 np.random.shuffle(veri)
@@ -35,7 +66,7 @@ cikti_katman = np.zeros(cikti_katman_boyutu)
 gizli_agirliklar = np.random.random((gizli_katman_boyutu, cikti_katman_boyutu))
 
 # Yapay Sinir Ağı Modeli
-"""
+""" 
 Yapay sinir ağı modeli, 10 özellikten oluşan bir giriş katmanı, 72 düğümlü bir gizli katman ve
 iki düğümlü bir çıkış katmanından oluşmaktadır. Gizli katman boyutu, deneyimler sonucunda
 seçilmiştir ve ağın karmaşıklığını artırarak daha iyi genelleme sağlaması amaçlanmıştır.
@@ -132,3 +163,34 @@ for i in range(len(x_test)):
 
 test_dogruluk_orani = test_dogru_sayisi / len(x_test)
 print("Test doğruluğu: %s / %s (%.2f%%)" % (test_dogru_sayisi, len(x_test), test_dogruluk_orani * 100))
+
+# Hiperparametre optimizasyonu için kullanılacak model
+model = MLPClassifier()
+
+# Hiperparametre aralıklarını belirleme
+param_distributions = {
+    'hidden_layer_sizes': [(50,), (60,), (70,), (80,), (90,), (100,)],
+    'learning_rate_init': [0.01, 0.05, 0.1],
+}
+
+# Hiperparametre optimizasyonu
+optimizer = RandomizedSearchCV(model, param_distributions, n_iter=10, scoring='accuracy', cv=3, random_state=42)
+optimizer.fit(x_egitim, y_egitim)
+
+# En iyi hiperparametreleri bulma
+print("En iyi hiperparametreler:", optimizer.best_params_)
+
+# En iyi modeli seçme
+en_iyi_model = optimizer.best_estimator_
+
+# Modelin performansını değerlendirme
+y_pred = en_iyi_model.predict(x_test)
+dogruluk = accuracy_score(y_test, y_pred)
+hassasiyet = precision_score(y_test, y_pred)
+ozgulluk = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+
+print("Test doğruluğu:", dogruluk)
+print("Hassasiyet:", hassasiyet)
+print("Özgüllük:", ozgulluk)    
+print("F1 Skoru:", f1)
