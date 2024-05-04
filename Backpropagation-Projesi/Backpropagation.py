@@ -2,55 +2,64 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
-
-# Debug modu: True ise işlemler ekrana yazdırılır, False ise yazdırılmaz
-DEBUG_MODE = False
+# ÖNEMLİ 
+# Debug modu: True ise işlemler çıktı ekranına yazdırılır, False ise yazdırılmaz ***
+DEBUG_MODE = True
 
 # Sigmoid aktivasyon fonksiyonu
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-# Sigmoid aktivasyon fonksiyonunun türevi
+# Sigmoid fonksiyonunun türevi
 def sigmoid_turevi(x):
     return x * (1 - x)
 
 # Model parametrelerinin başlatılması
 def parametreleri_baslat(giris_boyutu, gizli_boyut, cikis_boyutu):
-    W1 = np.random.randn(giris_boyutu, gizli_boyut)
-    b1 = np.zeros((1, gizli_boyut))
-    W2 = np.random.randn(gizli_boyut, cikis_boyutu)
-    b2 = np.zeros((1, cikis_boyutu))
+    W1 = np.random.randn(giris_boyutu, gizli_boyut)  # Gizli katman ağırlıklar
+    b1 = np.zeros((1, gizli_boyut))     # Gizli katman bias değerleri
+    W2 = np.random.randn(gizli_boyut, cikis_boyutu)     # Gizli katman ağırlık
+    b2 = np.zeros((1, cikis_boyutu))        # Çıkış bias
     return W1, b1, W2, b2
 
 # İleri yayılım işlemi
 def ileri_yayilim(X, W1, b1, W2, b2):
-    Z1 = np.dot(X, W1) + b1
-    A1 = sigmoid(Z1)
-    Z2 = np.dot(A1, W2) + b2
-    A2 = sigmoid(Z2)
+    Z1 = np.dot(X, W1) + b1     # Giriş verisini gizli katmana aktarma
+    A1 = sigmoid(Z1)        # Gizli katman çıkışlarını sigmoid fonksiyonundan geçirme
+    Z2 = np.dot(A1, W2) + b2        # Gizli katman çıkışlarını çıkış katmanına aktarma
+    A2 = sigmoid(Z2)        # Çıkış katman çıkışlarını sigmoid fonksiyonundan geçirme
     return Z1, A1, Z2, A2
 
 # Hata hesaplama
 def hata_hesapla(A2, Y):
-    m = Y.shape[0]
+    m = Y.shape[0]          # Veri noktalarının sayısını alma
     hata = -np.sum(np.multiply(np.log(A2), Y) + np.multiply(np.log(1 - A2), (1 - Y))) / m
     return hata
 
 # Geri yayılım işlemi
 def geri_yayilim(X, Y, Z1, A1, Z2, A2, W1, W2, b1, b2, ogrenme_orani):
-    m = X.shape[0]
-    dZ2 = A2 - Y
+    m = X.shape[0]      # Veri noktalarının sayısını alma
+    dZ2 = A2 - Y        # çıkışta hata hesaplama
+    
+    # Çıkış katmanındaki ağırlıkların güncellenmesi
     dW2 = (1 / m) * np.dot(A1.T, dZ2)
     db2 = (1 / m) * np.sum(dZ2, axis=0, keepdims=True)
+    
+    # Gizli katmandaki hata hesaplama
     dZ1 = np.dot(dZ2, W2.T) * sigmoid_turevi(A1)
+    
+    # Gizli katmandaki ağırlıkların güncellenmesi
     dW1 = (1 / m) * np.dot(X.T, dZ1)
     db1 = (1 / m) * np.sum(dZ1, axis=0, keepdims=True)
+    
+    # Ağırlıkların güncellenmesi
     W1 -= ogrenme_orani * dW1
     b1 -= ogrenme_orani * db1
     W2 -= ogrenme_orani * dW2
     b2 -= ogrenme_orani * db2
 
     if DEBUG_MODE:
+        # geri yayılım hesaplamalarını çıktı oalrak yazdırma
         print("Geri Yayılım Hesaplamaları:")
         print("dW1:", dW1)
         print("db1:", db1)
@@ -133,6 +142,7 @@ W1, b1, W2, b2, egitim_maliyetleri, test_maliyetleri, egitim_dogruluklari, test_
 # Sonuçları görselleştirme
 plt.figure(figsize=(12, 5))
 
+# Eğitim ve test maliyetlerini çizdirme
 plt.subplot(1, 2, 1)
 plt.plot(range(iterasyon_sayisi), egitim_maliyetleri, label='Eğitim')
 plt.plot(range(iterasyon_sayisi), test_maliyetleri, label='Test')
@@ -141,6 +151,7 @@ plt.ylabel('Maliyet')
 plt.title('Eğitim ve Doğrulama Kaybı')
 plt.legend()
 
+# Eğitim ve test doğruluklarını çizdirme
 plt.subplot(1, 2, 2)
 plt.plot(range(iterasyon_sayisi), egitim_dogruluklari, label='Eğitim')
 plt.plot(range(iterasyon_sayisi), test_dogruluklari, label='Test')
