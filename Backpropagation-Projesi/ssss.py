@@ -3,159 +3,150 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 
+# Debug modu: True ise işlemler ekrana yazdırılır, False ise yazdırılmaz
+DEBUG_MODE = False
 
-
+# Sigmoid aktivasyon fonksiyonu
 def sigmoid(x):
-    """
-    Sigmoid aktivasyon fonksiyonu
-    """
     return 1 / (1 + np.exp(-x))
 
-def sigmoid_derivative(x):
-    """
-    Sigmoid aktivasyon fonksiyonunun türevi
-    """
+# Sigmoid aktivasyon fonksiyonunun türevi
+def sigmoid_turevi(x):
     return x * (1 - x)
 
-def initialize_parameters(input_size, hidden_size, output_size):
-    """
-    Model parametrelerini başlatma
-    """
-    W1 = np.random.randn(input_size, hidden_size)
-    b1 = np.zeros((1, hidden_size))
-    W2 = np.random.randn(hidden_size, output_size)
-    b2 = np.zeros((1, output_size))
+# Model parametrelerinin başlatılması
+def parametreleri_baslat(giris_boyutu, gizli_boyut, cikis_boyutu):
+    W1 = np.random.randn(giris_boyutu, gizli_boyut)
+    b1 = np.zeros((1, gizli_boyut))
+    W2 = np.random.randn(gizli_boyut, cikis_boyutu)
+    b2 = np.zeros((1, cikis_boyutu))
     return W1, b1, W2, b2
 
-def forward_propagation(X, W1, b1, W2, b2):
-    """
-    İleri yayılım işlemi
-    """
+# İleri yayılım işlemi
+def ileri_yayilim(X, W1, b1, W2, b2):
     Z1 = np.dot(X, W1) + b1
     A1 = sigmoid(Z1)
     Z2 = np.dot(A1, W2) + b2
     A2 = sigmoid(Z2)
     return Z1, A1, Z2, A2
 
-def calculate_cost(A2, Y):
-    """
-    Hata hesaplama
-    """
+# Hata hesaplama
+def hata_hesapla(A2, Y):
     m = Y.shape[0]
-    cost = -np.sum(np.multiply(np.log(A2), Y) + np.multiply(np.log(1 - A2), (1 - Y))) / m
-    return cost
+    hata = -np.sum(np.multiply(np.log(A2), Y) + np.multiply(np.log(1 - A2), (1 - Y))) / m
+    return hata
 
-def backward_propagation(X, Y, Z1, A1, Z2, A2, W1, W2, b1, b2, learning_rate):
-    """
-    Geri yayılım işlemi
-    """
+# Geri yayılım işlemi
+def geri_yayilim(X, Y, Z1, A1, Z2, A2, W1, W2, b1, b2, ogrenme_orani):
     m = X.shape[0]
     dZ2 = A2 - Y
     dW2 = (1 / m) * np.dot(A1.T, dZ2)
     db2 = (1 / m) * np.sum(dZ2, axis=0, keepdims=True)
-    dZ1 = np.dot(dZ2, W2.T) * sigmoid_derivative(A1)
+    dZ1 = np.dot(dZ2, W2.T) * sigmoid_turevi(A1)
     dW1 = (1 / m) * np.dot(X.T, dZ1)
     db1 = (1 / m) * np.sum(dZ1, axis=0, keepdims=True)
-    W1 -= learning_rate * dW1
-    b1 -= learning_rate * db1
-    W2 -= learning_rate * dW2
-    b2 -= learning_rate * db2
+    W1 -= ogrenme_orani * dW1
+    b1 -= ogrenme_orani * db1
+    W2 -= ogrenme_orani * dW2
+    b2 -= ogrenme_orani * db2
+
+    if DEBUG_MODE:
+        print("Geri Yayılım Hesaplamaları:")
+        print("dW1:", dW1)
+        print("db1:", db1)
+        print("dW2:", dW2)
+        print("db2:", db2)
+    
     return W1, b1, W2, b2
 
-def train_neural_network(X_train, y_train, X_test, y_test, input_size, hidden_size, output_size, learning_rate, epochs):
-    """
-    Sinir ağı modelinin eğitimi
-    """
+# Sinir ağı modelinin eğitimi
+def sinir_agi_egitimi(X_train, y_train, X_test, y_test, giris_boyutu, gizli_boyut, cikis_boyutu, ogrenme_orani, iterasyon_sayisi):
     # Parametreleri başlatma
-    W1, b1, W2, b2 = initialize_parameters(input_size, hidden_size, output_size)
+    W1, b1, W2, b2 = parametreleri_baslat(giris_boyutu, gizli_boyut, cikis_boyutu)
     y_train = y_train.astype(int)  # y_train'i tamsayıya dönüştür
     y_test = y_test.astype(int)    # y_test'i tamsayıya dönüştür
- 
-    # Eğitim sırasında kaydedilecek metriklerin listeleri
-    train_costs = []
-    test_costs = []
-    train_accuracies = []
-    test_accuracies = []
+    
+    # Eğitim ve test verisi için maliyet ve doğruluk metriklerinin listeleri
+    egitim_maliyetleri = []
+    test_maliyetleri = []
+    egitim_dogruluklari = []
+    test_dogruluklari = []
     
     # Eğitim döngüsü
-    for epoch in range(epochs):
-        # İleri yayılım ve geri yayılım
-        Z1, A1, Z2, A2 = forward_propagation(X_train, W1, b1, W2, b2)
-        W1, b1, W2, b2 = backward_propagation(X_train, y_train.reshape(-1, 1), Z1, A1, Z2, A2, W1, W2, b1, b2, learning_rate)
+    for iterasyon in range(iterasyon_sayisi):
+        # İleri ve geri yayılım
+        Z1, A1, Z2, A2 = ileri_yayilim(X_train, W1, b1, W2, b2)
+        W1, b1, W2, b2 = geri_yayilim(X_train, y_train.reshape(-1, 1), Z1, A1, Z2, A2, W1, W2, b1, b2, ogrenme_orani)
         
         # Eğitim verisi üzerinde maliyeti hesapla ve kaydet
-        train_cost = calculate_cost(A2, y_train.reshape(-1, 1))
-        train_costs.append(train_cost)
+        egitim_maliyeti = hata_hesapla(A2, y_train.reshape(-1, 1))
+        egitim_maliyetleri.append(egitim_maliyeti)
         
         # Eğitim verisi üzerinde doğruluk hesapla ve kaydet
-        train_predictions = predict(X_train, W1, b1, W2, b2)
-        train_predictions = (train_predictions > 0.5).astype(int)
-
-        train_accuracy = accuracy_score(y_train, train_predictions)
-        train_accuracies.append(train_accuracy)
+        egitim_tahminleri = tahmin_et(X_train, W1, b1, W2, b2)
+        egitim_tahminleri = (egitim_tahminleri > 0.5).astype(int)
+        egitim_dogrulugu = accuracy_score(y_train, egitim_tahminleri)
+        egitim_dogruluklari.append(egitim_dogrulugu)
         
         # Test verisi üzerinde maliyeti hesapla ve kaydet
-        Z1_test, A1_test, Z2_test, A2_test = forward_propagation(X_test, W1, b1, W2, b2)
-        test_cost = calculate_cost(A2_test, y_test.reshape(-1, 1))
-        test_costs.append(test_cost)
+        Z1_test, A1_test, Z2_test, A2_test = ileri_yayilim(X_test, W1, b1, W2, b2)
+        test_maliyeti = hata_hesapla(A2_test, y_test.reshape(-1, 1))
+        test_maliyetleri.append(test_maliyeti)
         
         # Test verisi üzerinde doğruluk hesapla ve kaydet
-        test_predictions = predict(X_test, W1, b1, W2, b2)
-        test_accuracy = accuracy_score(y_test, test_predictions)
-        test_accuracies.append(test_accuracy)
+        test_tahminleri = tahmin_et(X_test, W1, b1, W2, b2)
+        test_dogrulugu = accuracy_score(y_test, test_tahminleri)
+        test_dogruluklari.append(test_dogrulugu)
         
-        # Her 100 epoch'ta bir eğitim ve test verisi için maliyeti ve doğruluğu yazdır
-        if epoch % 100 == 0:
-            print(f"Epoch {epoch}:")
-            print(f"  Train Cost: {train_cost}, Train Accuracy: {train_accuracy}")
-            print(f"  Test Cost: {test_cost}, Test Accuracy: {test_accuracy}")
+        # Her 100 iterasyonda bir eğitim ve test verisi için maliyeti ve doğruluğu yazdır
+        if iterasyon % 100 == 0:
+            if DEBUG_MODE:
+                print(f"Iterasyon {iterasyon}:")
+                print(f"  Eğitim Maliyeti: {egitim_maliyeti}, Eğitim Doğruluğu: {egitim_dogrulugu}")
+                print(f"  Test Maliyeti: {test_maliyeti}, Test Doğruluğu: {test_dogrulugu}")
     
-    return W1, b1, W2, b2, train_costs, test_costs, train_accuracies, test_accuracies
+    return W1, b1, W2, b2, egitim_maliyetleri, test_maliyetleri, egitim_dogruluklari, test_dogruluklari
 
-def predict(X_test, W1, b1, W2, b2):
-    """
-    Modelin test verisi üzerinde tahmin yapması
-    """
-    _, _, _, predictions = forward_propagation(X_test, W1, b1, W2, b2)
-    predictions = (predictions > 0.5).astype(int)
-    return predictions
+# Modelin test verisi üzerinde tahmin yapması
+def tahmin_et(X_test, W1, b1, W2, b2):
+    _, _, _, tahminler = ileri_yayilim(X_test, W1, b1, W2, b2)
+    tahminler = (tahminler > 0.5).astype(int)
+    return tahminler
 
-# Veriyi yükleme
-data_path = "C:\\Users\\FIRAT\\Desktop\\myProject\\veri-madenciligi\\Backpropagation-Projesi\\data.txt"
-data = np.loadtxt(data_path)
-X = data[:, :-1]
-y = data[:, -1]
-
-# Veriyi eğitim ve test kümelerine ayırma
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Veriyi yükleme ve eğitim/test kümelerine ayırma
+veri_yolu = "C:\\Users\\FIRAT\\Desktop\\myProject\\veri-madenciligi\\Backpropagation-Projesi\\data.txt"  # Veri yolu belirtilmeli
+veri = np.loadtxt(veri_yolu)
+X = veri[:, :-1]
+y = veri[:, -1]
+X_egitim, X_test, y_egitim, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Hiperparametreler
-input_size = X_train.shape[1]
-hidden_size = 10  # Değiştirilebilir
-output_size = 1   # İkili sınıflandırma varsayımı
-learning_rate = 0.01
-epochs = 1000
+giris_boyutu = X_egitim.shape[1]
+gizli_boyut = 10  # Değiştirilebilir
+cikis_boyutu = 1   # İkili sınıflandırma varsayımı
+ogrenme_orani = 0.01
+iterasyon_sayisi = 1000
 
 # Modeli eğitme
-W1, b1, W2, b2, train_costs, test_costs, train_accuracies, test_accuracies = train_neural_network(X_train, y_train, X_test, y_test, input_size, hidden_size, output_size, learning_rate, epochs)
+W1, b1, W2, b2, egitim_maliyetleri, test_maliyetleri, egitim_dogruluklari, test_dogruluklari = sinir_agi_egitimi(X_egitim, y_egitim, X_test, y_test, giris_boyutu, gizli_boyut, cikis_boyutu, ogrenme_orani, iterasyon_sayisi)
 
 # Sonuçları görselleştirme
-plt.figure(figsize=(10, 5))
+plt.figure(figsize=(12, 5))
 
 plt.subplot(1, 2, 1)
-plt.plot(range(epochs), train_costs, label='Train')
-plt.plot(range(epochs), test_costs, label='Test')
-plt.xlabel('Epoch')
-plt.ylabel('Cost')
-plt.title('Cost over epochs')
+plt.plot(range(iterasyon_sayisi), egitim_maliyetleri, label='Eğitim')
+plt.plot(range(iterasyon_sayisi), test_maliyetleri, label='Test')
+plt.xlabel('Iterasyon')
+plt.ylabel('Maliyet')
+plt.title('Eğitim ve Doğrulama Kaybı')
 plt.legend()
 
 plt.subplot(1, 2, 2)
-plt.plot(range(epochs), train_accuracies, label='Train')
-plt.plot(range(epochs), test_accuracies, label='Test')
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
-plt.title('Accuracy over epochs')
+plt.plot(range(iterasyon_sayisi), egitim_dogruluklari, label='Eğitim')
+plt.plot(range(iterasyon_sayisi), test_dogruluklari, label='Test')
+plt.xlabel('Iterasyon')
+plt.ylabel('Doğruluk')
+plt.title('Eğitim ve Doğrulama Doğruluğu')
 plt.legend()
 
 plt.tight_layout()
