@@ -11,7 +11,3 @@ NOT: İstenen algoritmayı kendiniz kodlayınız. Bu algoritmalar için hazır k
 
 
 
-https://www.kaggle.com/datasets/andreicosma/duke-breast-cancer-dataset/data
-https://www.kaggle.com/code/andreicosma/back-propagation-neural-network
-
-https://pyimagesearch.com/2021/05/06/backpropagation-from-scratch-with-python/
