@@ -21,6 +21,8 @@ with open(stopwords_path, "r", encoding="utf-8") as stopwords_file:
     stop_words = stopwords_file.read().splitlines()
 
 # Eğitim verisi için bir defaultdict oluşturuyoruz. Bu, her yazarın makalelerinin bir listesini saklamak için kullanılacaktır.
+#temizlenmiş metin ve her yazar içim dosya adlarını depolamak için bir defaultdict olan trainin_data oluşturuyoruz.
+#klasörünlerdeki isimler üzerinde döner klasörün adından yazar adını çıkarır
 training_data = defaultdict(list)
 
 # Eğitim verisini okuyun ve temizleyin
@@ -33,62 +35,68 @@ for author_folder in os.listdir(data_folder):
             with open(file_path, "r", encoding="utf-8") as file:
                 text = file.read()
                 # Metin temizleme işlemleri
-                cleaned_text = re.sub(r'\W', ' ', text)   # Noktalama işaretlerinin kaldırılması
-                cleaned_text = re.sub(r'\d+', ' ', cleaned_text)  # Sayıların kaldırılması
+                cleaned_text = re.sub(r'\W', ' ', text)   # Noktalama işaretlerinin kaldırılması (alfasayısal olmayan karakterleri kaldırarak temizler)
+                cleaned_text = re.sub(r'\d+', ' ', cleaned_text)  # Sayıların(rakam) kaldırılması 
                 cleaned_text = cleaned_text.lower()   # Metnin küçük harflere dönüştürülmesi
                 cleaned_text = ' '.join([word for word in cleaned_text.split() if word not in stop_words])  # Stop words'lerin kaldırılması
                 # Türkçe kök bulma işlemi
                 stemmer = TurkishStemmer()
-                cleaned_text = ' '.join([stemmer.stemWord(word) for word in cleaned_text.split()])
+                cleaned_text = ' '.join([stemmer.stemWord(word) for word in cleaned_text.split()]) #türkçe kelimelerideki kökleri belirlemeke için türkishstmmer kullandık
                 # Eğitim verisine temizlenmiş metni ekleyin
-                training_data[author_name].append((cleaned_text, file_name))  # Dosya ismiyle birlikte metni ekliyoruz
+                training_data[author_name].append((cleaned_text, file_name))  # Dosya ismiyle birlikte metni ekliyoruz (temizlenmiş metni ve dosya adını ilgili yazar için trainin_data sözlüğüne toplar)
 
 # Eğitim verilerini dengeli hale getirme
-# Her yazardan eşit sayıda örnek alın
+# Her yazardan eşit sayıda örnek alın   (DENGELİ EĞİTİM)
 min_samples = min(len(texts) for texts in training_data.values())
 for author, texts in training_data.items():
     training_data[author] = texts[:min_samples]
 
 # Eğitim ve test verilerini hazırlanması
-X = []
-y = []
+X = []   #EĞİTİM ÖRNEĞİ
+y = []   #ETİKETİ
 for author, texts in training_data.items():
-    X.extend(text[0] for text in texts)  # Metinler
-    y.extend([author] * len(texts))      # Yazar isimleri
+    X.extend(text[0] for text in texts)  # Her metinden temizlenmiş metni x listesine ekller
+    y.extend([author] * len(texts))      # her metin içinde y listesine Yazar isimi ekler
 
 # Veriyi karıştırma
-X, y = shuffle(X, y, random_state=42)
+X, y = shuffle(X, y, random_state=42)   #eğitim verisini rastgeleleştirmek için x y listeleri karıştırılır
 
 # Model oluşturma
-model = Pipeline([
-    ('tfidf', TfidfVectorizer()),
-    ('classifier', SVC())  
+model = Pipeline([  # boru hattı oluşturulur.
+    ('tfidf', TfidfVectorizer()), #metin verilerini sayısala dönüştürmek için tfidf vektörleyici kullanılır
+    ('classifier', SVC())  #metni yazarına göre sınıflandırmak için svc classifier kullanılır
 ])
 
-# GridSearchCV ile en iyi parametreleri bulma
+# GridSearchCV ile en iyi parametreleri bulma (hiperparametre arama)
+#param_grid farklı değişkenleri keşfetmek için kullanıyoruz (parametre_ızgarası)
 param_grid = {
-    'classifier__C': [0.1, 1, 10, 100],
-    'classifier__gamma': [1, 0.1, 0.01, 0.001],
-    'classifier__kernel': ['rbf', 'linear', 'poly', 'sigmoid']
+    'classifier__C': [0.1, 1, 10, 100], #düzenleme parametresi
+    'classifier__gamma': [1, 0.1, 0.01, 0.001], #çekirdek katsayısı
+    'classifier__kernel': ['rbf', 'linear', 'poly', 'sigmoid'] 
 }
-
+# gridSearchCV pipeline tarafından oluşturulur 5kat çapraz doğrulama kullanılarak arama yapmak için
 grid_search = GridSearchCV(model, param_grid, cv=5)
 grid_search.fit(X, y)
+#en iyi  gird aramayı yapmak için x y yi rastgele verir
 
-best_model = grid_search.best_estimator_
+#en iyi modelin eğitilmesi
+best_model = grid_search.best_estimator_ #grid_search.best_estimator_ kullanarak grid aramadan en iyi modeli seçer
 
-# Eğitim ve doğrulama verisi için modeli eğitin
+# Eğitim ve doğrulama verisini ayırmak için train_test_split ayırır kullanarak modeli böler 
 X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
-best_model.fit(X_train, y_train)
+best_model.fit(X_train, y_train) #en iyi modeli x_Train y_trina eğitim setine göre uydurur
 
 # Model performansını değerlendirme
-y_pred = best_model.predict(X_val)
+y_pred = best_model.predict(X_val) # en iyi modeli kullanarak modeli yazarı tahmin eder
 print("Sınıflandırma Raporu:")
-print(classification_report(y_val, y_pred))
+print(classification_report(y_val, y_pred)) # classification_report kullanarak her yazar için hassasiyer recall f1score ve destek score gösterilir ve yazdırılır
 
+
+
+#yeni veri üzerinden modelin Testiii
 # Test verisi üzerinde tahminler ve gerçek değerlerin toplanması
-true_values = []
-predicted_values = []
+true_values = [] #gerçek değerler
+predicted_values = [] #tamin
 
 # Test verisindeki her bir yazar için
 for author_folder in os.listdir(test_data_folder):
