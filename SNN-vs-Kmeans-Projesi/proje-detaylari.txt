@@ -2,3 +2,12 @@ Kendi seçeceğiniz iki boyutlu bir veri seti üzerinde SNN ve K-means algoritma
 
 Ödevler teslim edilirken sisteme yüklenecek dosyalar: Rapor ve Kod dosyası
 Raporu hazırlarken, model için kullandığınız/oluşturduğunuz veri kümesini, burada ne tür önişleme adımlarını gerçekleştirdiğinizi, modeli nasıl oluşturduğunuzu, elde ettiğiniz sonuçların ne olduğunu detaylandırmanız ve iki yöntemin sonuçları için karşılaştırma yapmanız gerekmektedir.
+
+
+
+
+
+
+http://mlwiki.org/index.php/SNN_Clustering
+
+https://www-users.cse.umn.edu/~kumar001/papers/siam_hd_snn_cluster.pdf

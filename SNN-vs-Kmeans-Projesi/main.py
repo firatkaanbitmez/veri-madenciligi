@@ -1,19 +1,33 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Parametreler fonksiyonu
+def Parametreler():
+    parametreler = {
+        "rastgele_seed": 42,  # Rastgelelik için seed değeri
+        "kume1_ort": [1, 1],  # 1. kümenin ortalama değeri
+        "kume2_ort": [5, 4],  # 2. kümenin ortalama değeri
+        "kume_std": 1.0,  # Kümelerin standart sapması
+        "her_kume_icin_ornek_sayisi": 100,  # Her küme için örnek sayısı
+        "snn_eps": 0.7,  # SNN algoritması için komşuluk eşiği
+        "snn_min_pts": 5,  # SNN algoritması için minimum komşu sayısı
+        "kmeans_k": 2,  # K-means algoritması için küme sayısı
+        "kmeans_max_iter": 100  # K-means algoritması için maksimum iterasyon sayısı
+    }
+    return parametreler
+
+# Parametreleri yükle
+parametreler = Parametreler()
+
 # Veri seti oluşturma
-np.random.seed(42)
+np.random.seed(parametreler["rastgele_seed"])
 
 # İki küme oluşturma
-kume1_ort = [1, 1]
-kume2_ort = [5, 4]
-kume_std = 1.0
-
-veri_kume1 = np.random.randn(100, 2) * kume_std + kume1_ort
-veri_kume2 = np.random.randn(100, 2) * kume_std + kume2_ort
+veri_kume1 = np.random.randn(parametreler["her_kume_icin_ornek_sayisi"], 2) * parametreler["kume_std"] + parametreler["kume1_ort"]
+veri_kume2 = np.random.randn(parametreler["her_kume_icin_ornek_sayisi"], 2) * parametreler["kume_std"] + parametreler["kume2_ort"]
 
 veri = np.vstack((veri_kume1, veri_kume2))
-etiketler = np.hstack((np.zeros(100), np.ones(100)))  # Küme etiketleri
+etiketler = np.hstack((np.zeros(parametreler["her_kume_icin_ornek_sayisi"]), np.ones(parametreler["her_kume_icin_ornek_sayisi"])))  # Küme etiketleri
 
 # Veri setini görselleştirme
 plt.figure(figsize=(8, 6))
@@ -25,7 +39,7 @@ plt.colorbar()
 plt.grid(True)
 plt.show()
 
-# Shared Nearest Neighbor (SNN) Algoritması
+# Ortak En Yakın Komşu (Shared Nearest Neighbor, SNN) Algoritması
 class SNN:
     def __init__(self, eps=1.0, min_pts=5):
         self.eps = eps  # Komşuluk eşiği
@@ -34,42 +48,41 @@ class SNN:
     def fit(self, veri):
         self.veri = veri
         self.n = len(veri)
-        self.etiketler = np.full(self.n, -1)  # -1: Noise, 0, 1, 2, ...: Küme etiketleri
+        self.etiketler = np.full(self.n, -1)  # -1: Gürültü, 0, 1, 2, ...: Küme etiketleri
         self.kume_sayisi = 0
 
         for i in range(self.n):
             if self.etiketler[i] == -1:  # Daha önce etiketlenmemişse
-                self.expand_cluster(i)
+                self.kume_genislet(i)
 
-    def expand_cluster(self, nokta_index):
-        komsular = self.get_shared_neighbors(nokta_index)
+    def kume_genislet(self, nokta_index):
+        komsular = self.ortak_komsulari_bul(nokta_index)
         
-        # Check if the point has enough neighbors to form a cluster
+        # Noktanın bir küme oluşturmak için yeterli komşusu olup olmadığını kontrol et
         if len(komsular) < self.min_pts:
-            self.etiketler[nokta_index] = -1  # Noise
+            self.etiketler[nokta_index] = -1  # Gürültü
             return False
         else:
             self.kume_sayisi += 1
             self.etiketler[nokta_index] = self.kume_sayisi
             
-            # Iterate over neighbors to assign cluster labels
+            # Komşuların küme etiketlerini atama
             for komsu in komsular:
-                if self.etiketler[komsu] == -1:  # If neighbor is noise
+                if self.etiketler[komsu] == -1:  # Eğer komşu gürültü ise
                     self.etiketler[komsu] = self.kume_sayisi
-                elif self.etiketler[komsu] == 0:  # If neighbor is not assigned
+                elif self.etiketler[komsu] == 0:  # Eğer komşu henüz atanmadıysa
                     self.etiketler[komsu] = self.kume_sayisi
-                    self.expand_cluster(komsu)  # Recursively expand the cluster
+                    self.kume_genislet(komsu)  # Küme genişletme işlemini tekrarla
             return True
 
-    def get_shared_neighbors(self, nokta_index):
+    def ortak_komsulari_bul(self, nokta_index):
         komsular = []
         for i in range(self.n):
             if i != nokta_index:
-                dist = np.linalg.norm(self.veri[nokta_index] - self.veri[i])
-                if dist < self.eps:
+                mesafe = np.linalg.norm(self.veri[nokta_index] - self.veri[i])
+                if mesafe < self.eps:
                     komsular.append(i)
         return komsular
-
 
 # K-means Algoritması
 class KMeans:
@@ -85,12 +98,21 @@ class KMeans:
         # Rastgele k merkezi seçme
         self.merkezler = veri[np.random.choice(self.n, self.k, replace=False)]
         
-        for _ in range(self.max_iter):
+        for iterasyon in range(self.max_iter):
+            # Veri noktalarını en yakın merkeze ata
             self.etiketler = self.kumelere_ata()
+            
+            # Yeni merkezleri güncelle
             yeni_merkezler = self.merkezleri_guncelle()
-            if np.allclose(self.merkezler, yeni_merkezler):  # Kümelerin merkezleri değişmediyse
+            
+            # Merkezlerin değişip değişmediğini kontrol et
+            if np.allclose(self.merkezler, yeni_merkezler):
+                print(f"Iterasyon {iterasyon}: Kümeler sabitlendi.")
                 break
             self.merkezler = yeni_merkezler
+            print(f"Iterasyon {iterasyon}: Merkezler güncellendi.")
+        
+        print("Son Merkezler: ", self.merkezler)
 
     def kumelere_ata(self):
         mesafeler = np.zeros((self.n, self.k))
@@ -105,11 +127,11 @@ class KMeans:
         return yeni_merkezler
 
 # SNN ve K-means uygulaması
-snn = SNN(eps=0.7, min_pts=5)
+snn = SNN(eps=parametreler["snn_eps"], min_pts=parametreler["snn_min_pts"])
 snn.fit(veri)
 snn_etiketler = snn.etiketler
 
-kmeans = KMeans(k=2, max_iter=100)
+kmeans = KMeans(k=parametreler["kmeans_k"], max_iter=parametreler["kmeans_max_iter"])
 kmeans.fit(veri)
 kmeans_etiketler = kmeans.etiketler
 
@@ -133,3 +155,10 @@ plt.ylabel('Y Ekseni')
 
 plt.tight_layout()
 plt.show()
+
+# SNN ve K-means sonuçlarını terminalde yazdırma
+print("SNN Kümeleme Sonuçları:")
+print(snn_etiketler)
+
+print("\nK-means Kümeleme Sonuçları:")
+print(kmeans_etiketler)
